@@ -1,4 +1,5 @@
 import { Section } from "@/components/Section";
+import { site } from "@/lib/site";
 
 export default function HomePage() {
   return (
@@ -81,33 +82,61 @@ export default function HomePage() {
       <Section
         id="pricing"
         title="Pricing"
-        subtitle="Placeholder. Stripe comes next."
+        subtitle="Clear pricing. No surprises."
       >
         <div className="grid gap-4 md:grid-cols-3">
-          {[
-            ["Basic", "Appeal letter + checklist", "€XX"],
-            ["Standard", "Basic + follow-up", "€XX"],
-            ["Premium", "Standard + external complaint draft", "€XX"],
-          ].map(([name, desc, price]) => (
-            <div key={name} className="rounded-lg border p-5">
-              <div className="font-medium">{name}</div>
-              <div className="mt-1 text-sm text-neutral-600">{desc}</div>
-              <div className="mt-4 text-2xl font-semibold">{price}</div>
-              <a
-                href="#contact"
-                className="mt-5 inline-flex w-full justify-center rounded-md bg-black px-4 py-2.5 text-sm font-medium text-white"
-              >
-                Get started
-              </a>
+          {/* BASIC */}
+          <div className="rounded-lg border p-5">
+            <div className="font-medium">Basic</div>
+            <div className="mt-1 text-sm text-neutral-600">
+              Appeal letter draft + checklist
             </div>
-          ))}
+            <div className="mt-4 text-2xl font-semibold">€XX</div>
+            <a
+              href={site.stripe.basic}
+              className="mt-5 inline-flex w-full justify-center rounded-md bg-black px-4 py-2.5 text-sm font-medium text-white hover:bg-neutral-800"
+            >
+              Choose Basic
+            </a>
+          </div>
+
+          {/* STANDARD */}
+          <div className="rounded-lg border p-5">
+            <div className="font-medium">Standard</div>
+            <div className="mt-1 text-sm text-neutral-600">
+              Basic + follow-up appeal + case structuring
+            </div>
+            <div className="mt-4 text-2xl font-semibold">€XX</div>
+            <a
+              href={site.stripe.standard}
+              className="mt-5 inline-flex w-full justify-center rounded-md bg-black px-4 py-2.5 text-sm font-medium text-white hover:bg-neutral-800"
+            >
+              Choose Standard
+            </a>
+          </div>
+
+          {/* PREMIUM */}
+          <div className="rounded-lg border p-5">
+            <div className="font-medium">Premium</div>
+            <div className="mt-1 text-sm text-neutral-600">
+              Standard + external complaint draft + priority support
+            </div>
+            <div className="mt-4 text-2xl font-semibold">€XX</div>
+            <a
+              href={site.stripe.premium}
+              className="mt-5 inline-flex w-full justify-center rounded-md bg-black px-4 py-2.5 text-sm font-medium text-white hover:bg-neutral-800"
+            >
+              Choose Premium
+            </a>
+          </div>
         </div>
 
         <p className="mt-6 text-sm text-neutral-600">
-          Note: No guarantees. You submit appeals yourself. We provide documents
-          + guidance.
+          No guarantees. You submit appeals yourself. We provide structured documents
+          and guidance only.
         </p>
       </Section>
+
 
       <Section
         id="faq"
