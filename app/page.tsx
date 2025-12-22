@@ -1,65 +1,151 @@
-import Image from "next/image";
+import { Section } from "@/components/Section";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      {/* HERO */}
+      <section className="border-b">
+        <div className="mx-auto max-w-5xl px-4 py-20">
+          <p className="text-sm text-neutral-600">Service</p>
+          <h1 className="mt-3 text-4xl font-semibold tracking-tight">
+            Account appeal help that stays calm, factual, and structured.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+          <p className="mt-4 max-w-2xl text-neutral-600">
+            Placeholder copy. This page will be information-heavy. We’ll replace
+            all text once you paste your preferred homepage style.
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="#pricing"
+              className="rounded-md bg-black px-4 py-2.5 text-sm font-medium text-white"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
+              See pricing
+            </a>
             <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="#contact"
+              className="rounded-md border px-4 py-2.5 text-sm font-medium hover:bg-neutral-50"
             >
-              Learning
-            </a>{" "}
-            center.
+              Contact
+            </a>
+          </div>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {[
+              "No emotional appeals. No guessing.",
+              "Clear steps and documents.",
+              "Built to preserve escalation options.",
+            ].map((t) => (
+              <div
+                key={t}
+                className="rounded-lg border bg-white p-4 text-sm text-neutral-700"
+              >
+                {t}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Section
+        id="services"
+        title="What you get"
+        subtitle="Placeholder bullets. We’ll refine after you share your style."
+      >
+        <ul className="list-disc space-y-2 pl-5 text-neutral-700">
+          <li>Appeal letter drafted from your facts</li>
+          <li>Evidence checklist (what to gather, what to avoid)</li>
+          <li>Optional follow-up / escalation drafts (later)</li>
+        </ul>
+      </Section>
+
+      <Section
+        id="process"
+        title="How it works"
+        subtitle="Simple, repeatable process."
+      >
+        <ol className="grid gap-4 md:grid-cols-3">
+          {[
+            ["1) Intake", "You share the facts + screenshots."],
+            ["2) Draft", "We prepare clean, consistent documents."],
+            ["3) Submit", "You submit through official channels."],
+          ].map(([a, b]) => (
+            <li key={a} className="rounded-lg border p-4">
+              <div className="font-medium">{a}</div>
+              <div className="mt-1 text-sm text-neutral-600">{b}</div>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section
+        id="pricing"
+        title="Pricing"
+        subtitle="Placeholder. Stripe comes next."
+      >
+        <div className="grid gap-4 md:grid-cols-3">
+          {[
+            ["Basic", "Appeal letter + checklist", "€XX"],
+            ["Standard", "Basic + follow-up", "€XX"],
+            ["Premium", "Standard + external complaint draft", "€XX"],
+          ].map(([name, desc, price]) => (
+            <div key={name} className="rounded-lg border p-5">
+              <div className="font-medium">{name}</div>
+              <div className="mt-1 text-sm text-neutral-600">{desc}</div>
+              <div className="mt-4 text-2xl font-semibold">{price}</div>
+              <a
+                href="#contact"
+                className="mt-5 inline-flex w-full justify-center rounded-md bg-black px-4 py-2.5 text-sm font-medium text-white"
+              >
+                Get started
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-6 text-sm text-neutral-600">
+          Note: No guarantees. You submit appeals yourself. We provide documents
+          + guidance.
+        </p>
+      </Section>
+
+      <Section
+        id="faq"
+        title="FAQ"
+        subtitle="Short and factual. No marketing noise."
+      >
+        <div className="space-y-3">
+          {[
+            ["Do you contact platforms for me?", "No. You submit everything."],
+            [
+              "Do you guarantee reinstatement?",
+              "No. We improve structure and reduce self-sabotage.",
+            ],
+            [
+              "What do you need from me?",
+              "Screenshots, timeline, and any platform messages.",
+            ],
+          ].map(([q, a]) => (
+            <div key={q} className="rounded-lg border p-4">
+              <div className="font-medium">{q}</div>
+              <div className="mt-1 text-sm text-neutral-600">{a}</div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section
+        id="contact"
+        title="Contact"
+        subtitle="For now this is a placeholder. Next step: real contact form."
+      >
+        <div className="rounded-lg border p-5 text-sm text-neutral-700">
+          <p>
+            Add your contact email here later. Next step we build a proper form
+            with spam protection and email delivery.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </Section>
+    </>
   );
 }
