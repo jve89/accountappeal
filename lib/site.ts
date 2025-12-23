@@ -1,12 +1,21 @@
+const BASE_URL =
+  process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
 export const site = {
   name: "AccountAppeal",
-  domain: "accountappeal.com", // placeholder
-  email: "support@accountappeal.com", // placeholder
+  domain: "accountappeal.com", // placeholder (not used yet)
+  email: "support@accountappeal.com", // placeholder (not used yet)
 
   stripe: {
-    basic: "https://buy.stripe.com/6oUfZhg7S5qn4y07cA2Fa03",
-    standard: "https://buy.stripe.com/5kQeVd4pa4mj4y01Sg2Fa01",
-    premium: "https://buy.stripe.com/eVqeVd8Fqg51d4wcwU2Fa02",
+    basic: `https://buy.stripe.com/test_9B63cv1bc5FI2CmgrQ6Na00?success_url=${encodeURIComponent(
+      `${BASE_URL}/onboarding/basic`
+    )}`,
+    standard: `https://buy.stripe.com/test_cNifZh3jkgkmdh0ejI6Na01?success_url=${encodeURIComponent(
+      `${BASE_URL}/onboarding/standard`
+    )}`,
+    premium: `https://buy.stripe.com/test_9B6dR93jk9VYgtcgrQ6Na02?success_url=${encodeURIComponent(
+      `${BASE_URL}/onboarding/premium`
+    )}`,
   },
 } as const;
 

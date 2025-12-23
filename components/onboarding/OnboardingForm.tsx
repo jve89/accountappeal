@@ -2,7 +2,13 @@ import { submitOnboarding } from "@/app/actions/onboarding";
 
 type Tier = "basic" | "standard" | "premium";
 
-export function OnboardingForm({ tier }: { tier: Tier }) {
+export function OnboardingForm({
+  tier,
+  prefillEmail,
+}: {
+  tier: Tier;
+  prefillEmail?: string | null;
+}) {
   return (
     <main className="mx-auto max-w-3xl px-4 py-16">
       <h1 className="text-2xl font-semibold tracking-tight">
@@ -15,8 +21,24 @@ export function OnboardingForm({ tier }: { tier: Tier }) {
       </p>
 
       <form action={submitOnboarding} className="mt-10 space-y-10">
-        {/* 1. Situation description */}
         <input type="hidden" name="tier" value={tier} />
+
+        {/* Email (prefilled from Stripe when available) */}
+        <div>
+          <label className="block text-sm font-medium">Email</label>
+          <p className="mt-1 text-sm text-neutral-600">
+            We’ll use this to contact you if we need a clarification.
+          </p>
+          <input
+            type="email"
+            name="email"
+            required
+            defaultValue={prefillEmail ?? ""}
+            className="mt-3 w-full rounded-md border px-3 py-2"
+          />
+        </div>
+
+        {/* 1. Situation description */}
         <div>
           <label className="block text-sm font-medium">
             Please describe the situation that led to your suspension
@@ -113,24 +135,19 @@ export function OnboardingForm({ tier }: { tier: Tier }) {
               Yes, I understand
             </label>
             <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="scope_confirmation"
-                value="clarification"
-              />
+              <input type="radio" name="scope_confirmation" value="clarification" />
               I understand, but I need clarification before we proceed
             </label>
           </div>
         </div>
 
-        {/* Placeholder submit */}
         <div className="pt-4">
           <button
             type="submit"
             className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800"
-            >
+          >
             Submit onboarding
-            </button>
+          </button>
         </div>
       </form>
     </main>

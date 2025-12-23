@@ -1,5 +1,4 @@
 import { Section } from "@/components/Section";
-import { site } from "@/lib/site";
 import { sendContactEmail } from "@/app/actions/contact";
 
 export default function HomePage() {
@@ -93,12 +92,14 @@ export default function HomePage() {
               Appeal letter draft + checklist
             </div>
             <div className="mt-4 text-2xl font-semibold">€XX</div>
-            <a
-              href={site.stripe.basic}
-              className="mt-5 inline-flex w-full justify-center rounded-md bg-black px-4 py-2.5 text-sm font-medium text-white hover:bg-neutral-800"
-            >
-              Choose Basic
-            </a>
+            <form action="/api/checkout?tier=basic" method="POST">
+              <button
+                type="submit"
+                className="mt-5 inline-flex w-full justify-center rounded-md bg-black px-4 py-2.5 text-sm font-medium text-white hover:bg-neutral-800"
+              >
+                Choose Basic
+              </button>
+            </form>
           </div>
 
           {/* STANDARD */}
@@ -108,12 +109,14 @@ export default function HomePage() {
               Basic + follow-up appeal + case structuring
             </div>
             <div className="mt-4 text-2xl font-semibold">€XX</div>
-            <a
-              href={site.stripe.standard}
-              className="mt-5 inline-flex w-full justify-center rounded-md bg-black px-4 py-2.5 text-sm font-medium text-white hover:bg-neutral-800"
-            >
-              Choose Standard
-            </a>
+            <form action="/api/checkout?tier=standard" method="POST">
+              <button
+                type="submit"
+                className="mt-5 inline-flex w-full justify-center rounded-md bg-black px-4 py-2.5 text-sm font-medium text-white hover:bg-neutral-800"
+              >
+                Choose Standard
+              </button>
+            </form>
           </div>
 
           {/* PREMIUM */}
@@ -123,12 +126,14 @@ export default function HomePage() {
               Standard + external complaint draft + priority support
             </div>
             <div className="mt-4 text-2xl font-semibold">€XX</div>
-            <a
-              href={site.stripe.premium}
-              className="mt-5 inline-flex w-full justify-center rounded-md bg-black px-4 py-2.5 text-sm font-medium text-white hover:bg-neutral-800"
-            >
-              Choose Premium
-            </a>
+            <form action="/api/checkout?tier=premium" method="POST">
+              <button
+                type="submit"
+                className="mt-5 inline-flex w-full justify-center rounded-md bg-black px-4 py-2.5 text-sm font-medium text-white hover:bg-neutral-800"
+              >
+                Choose Premium
+              </button>
+            </form>
           </div>
         </div>
 
@@ -137,7 +142,6 @@ export default function HomePage() {
           and guidance only.
         </p>
       </Section>
-
 
       <Section
         id="faq"
