@@ -1,0 +1,55 @@
+.
+├── .env.example
+├── .env.local
+├── .gitignore
+├── README.md
+├── app
+│   ├── actions
+│   │   ├── contact.ts
+│   │   ├── onboarding.ts
+│   │   └── paymentConfirmation.ts
+│   ├── api
+│   │   └── checkout
+│   │       └── route.ts
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── onboarding
+│   │   ├── basic
+│   │   │   ├── page.tsx
+│   │   │   └── submitted
+│   │   │       └── page.tsx
+│   │   ├── premium
+│   │   │   ├── page.tsx
+│   │   │   └── submitted
+│   │   │       └── page.tsx
+│   │   └── standard
+│   │       ├── page.tsx
+│   │       └── submitted
+│   │           └── page.tsx
+│   ├── page.tsx
+│   ├── privacy
+│   │   └── page.tsx
+│   └── terms
+│       └── page.tsx
+├── components
+│   ├── Section.tsx
+│   ├── SiteFooter.tsx
+│   ├── SiteHeader.tsx
+│   └── onboarding
+│       └── OnboardingForm.tsx
+├── eslint.config.mjs
+├── filetree.txt
+├── lib
+│   ├── getCheckoutEmail.ts
+│   ├── site.ts
+│   └── stripe.ts
+├── next-env.d.ts
+├── next.config.ts
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── public
+└── tsconfig.json
+
+18 directories, 35 files

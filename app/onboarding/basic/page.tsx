@@ -1,5 +1,6 @@
 import { OnboardingForm } from "@/components/onboarding/OnboardingForm";
 import { getCheckoutEmail } from "@/lib/getCheckoutEmail";
+import { sendPaymentConfirmation } from "@/app/actions/paymentConfirmation";
 
 export default async function BasicOnboardingPage({
   searchParams,
@@ -9,16 +10,19 @@ export default async function BasicOnboardingPage({
   const params = await searchParams;
   const sessionId = params.session_id;
 
-  const email = await getCheckoutEmail(sessionId);
+  let email: string | null = null;
+
+  if (sessionId) {
+    await sendPaymentConfirmation(sessionId);
+    email = await getCheckoutEmail(sessionId);
+  }
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-16 space-y-8">
-      {/* Soft payment guardrail */}
       {sessionId ? (
         <div className="rounded-md border border-green-300 bg-green-50 p-4 text-sm text-green-800">
-          <strong>Payment received.</strong>{" "}
-          You can complete this onboarding now or later. We’ve also emailed you a
-          link to return here anytime.
+          <strong>Payment received.</strong> You can complete this onboarding now
+          or later. We’ve also emailed you a link to return here anytime.
         </div>
       ) : (
         <div className="rounded-md border border-yellow-300 bg-yellow-50 p-4 text-sm text-yellow-800">

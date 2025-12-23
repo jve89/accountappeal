@@ -23,14 +23,20 @@ export async function POST(req: Request) {
 
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
+
+    // 🔒 CRITICAL: force email collection + persistence
+    customer_creation: "always",
+
     line_items: [
       {
         price: PRICE_BY_TIER[tier],
         quantity: 1,
       },
     ],
+
     success_url: `${BASE_URL}/onboarding/${tier}?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${BASE_URL}/pricing`,
+
     metadata: {
       tier,
       welcome_email_sent: "false",
