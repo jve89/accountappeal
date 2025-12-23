@@ -1,5 +1,6 @@
 import { Section } from "@/components/Section";
 import { site } from "@/lib/site";
+import { sendContactEmail } from "@/app/actions/contact";
 
 export default function HomePage() {
   return (
@@ -163,18 +164,46 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section
-        id="contact"
-        title="Contact"
-        subtitle="For now this is a placeholder. Next step: real contact form."
+      <form
+        action={sendContactEmail}
+        className="mt-8 max-w-xl space-y-4"
       >
-        <div className="rounded-lg border p-5 text-sm text-neutral-700">
-          <p>
-            Add your contact email here later. Next step we build a proper form
-            with spam protection and email delivery.
-          </p>
+        <div>
+          <label className="block text-sm font-medium">Name</label>
+          <input
+            name="name"
+            required
+            className="mt-1 w-full rounded-md border px-3 py-2"
+          />
         </div>
-      </Section>
+
+        <div>
+          <label className="block text-sm font-medium">Email</label>
+          <input
+            type="email"
+            name="email"
+            required
+            className="mt-1 w-full rounded-md border px-3 py-2"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium">Message</label>
+          <textarea
+            name="message"
+            rows={5}
+            required
+            className="mt-1 w-full rounded-md border px-3 py-2"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800"
+        >
+          Send message
+        </button>
+      </form>
     </>
   );
 }
