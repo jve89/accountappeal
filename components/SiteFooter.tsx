@@ -3,25 +3,30 @@ import { site } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t">
-      <div className="mx-auto max-w-5xl px-4 py-10 text-sm text-neutral-600">
+    <footer className="border-t border-slate-200">
+      <div className="mx-auto max-w-5xl px-6 py-12 text-sm text-slate-600">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <div className="font-medium text-neutral-900">{site.name}</div>
-            <div className="mt-1">Service website. No fluff.</div>
+          {/* Identity */}
+          <div className="max-w-sm">
+            <div className="font-medium text-slate-900">{site.name}</div>
+            <div className="mt-1">
+              Structured appeal documents and guidance for suspended social media
+              accounts.
+            </div>
           </div>
 
-          <div className="flex gap-4">
-            <Link href="/privacy" className="hover:text-black">
+          {/* Legal */}
+          <div className="flex gap-6">
+            <Link href="/privacy" className="hover:text-slate-900">
               Privacy
             </Link>
-            <Link href="/terms" className="hover:text-black">
+            <Link href="/terms" className="hover:text-slate-900">
               Terms
             </Link>
           </div>
         </div>
 
-        <div className="mt-8 text-xs text-neutral-500">
+        <div className="mt-10 text-xs text-slate-500">
           © {new Date().getFullYear()} {site.name}. All rights reserved.
         </div>
       </div>
