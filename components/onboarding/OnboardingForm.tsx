@@ -1,3 +1,5 @@
+import { submitOnboarding } from "@/app/actions/onboarding";
+
 type Tier = "basic" | "standard" | "premium";
 
 export function OnboardingForm({ tier }: { tier: Tier }) {
@@ -12,8 +14,9 @@ export function OnboardingForm({ tier }: { tier: Tier }) {
         This information is used to prepare your appeal documents.
       </p>
 
-      <form className="mt-10 space-y-10">
+      <form action={submitOnboarding} className="mt-10 space-y-10">
         {/* 1. Situation description */}
+        <input type="hidden" name="tier" value={tier} />
         <div>
           <label className="block text-sm font-medium">
             Please describe the situation that led to your suspension
@@ -123,12 +126,11 @@ export function OnboardingForm({ tier }: { tier: Tier }) {
         {/* Placeholder submit */}
         <div className="pt-4">
           <button
-            type="button"
-            disabled
-            className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white opacity-50"
-          >
-            Submit (next step)
-          </button>
+            type="submit"
+            className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800"
+            >
+            Submit onboarding
+            </button>
         </div>
       </form>
     </main>
