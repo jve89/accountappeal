@@ -13,7 +13,6 @@ export function Section(props: {
           <h2 className="text-2xl font-semibold tracking-tight">
             {props.title}
           </h2>
-
           {props.subtitle ? (
             <p className="mt-2 text-neutral-600">{props.subtitle}</p>
           ) : null}

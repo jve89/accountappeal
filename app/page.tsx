@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="border-b">
+      <section className="py-0">
         <div className="mx-auto max-w-5xl px-4 py-20">
           <p className="text-sm text-neutral-600">Service</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">
@@ -166,7 +166,7 @@ export default function HomePage() {
 
       <form
         action={sendContactEmail}
-        className="mt-8 max-w-xl space-y-4"
+        className="mt-8 mx-auto max-w-xl space-y-4"
       >
         <div>
           <label className="block text-sm font-medium">Name</label>
