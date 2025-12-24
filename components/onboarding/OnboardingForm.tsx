@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { submitOnboarding } from "@/app/actions/onboarding";
 
 type Tier = "basic" | "standard" | "premium";
@@ -9,6 +12,8 @@ export function OnboardingForm({
   tier: Tier;
   prefillEmail?: string | null;
 }) {
+  const [fileCount, setFileCount] = useState(0);
+
   return (
     <main className="mx-auto max-w-5xl px-6 py-20">
       {/* Header */}
@@ -25,7 +30,7 @@ export function OnboardingForm({
 
       {/* Form card */}
       <div className="mt-10 rounded-lg border border-slate-200 bg-white p-8">
-        <form action={submitOnboarding} className="space-y-10">
+        <form action={submitOnboarding} encType="multipart/form-data" className="space-y-10">
           <input type="hidden" name="tier" value={tier} />
 
           {/* Email */}
@@ -52,8 +57,7 @@ export function OnboardingForm({
             </label>
             <p className="mt-1 text-sm text-slate-600">
               What happened before it, any messages you received, when it occurred,
-              what you think may have triggered it, and relevant context about your
-              account. Stick to facts and platform messages rather than assumptions.
+              and relevant context about your account. Stick to facts.
             </p>
             <textarea
               name="suspension_description"
@@ -90,27 +94,34 @@ export function OnboardingForm({
               Upload screenshots or messages (optional)
             </label>
             <p className="mt-1 text-sm text-slate-600">
-              Suspension notices, warnings, login alerts, or error messages.
-              You can always send more later.
+              Images or PDFs only. Max 5 files, 5 MB each.
             </p>
+
             <div className="mt-3">
-            <label
+              <label
                 htmlFor="attachments"
                 className="inline-flex cursor-pointer items-center rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
-            >
+              >
                 Choose files
-            </label>
-            <span className="ml-3 text-sm text-slate-500">
-                No files selected
-            </span>
+              </label>
 
-            <input
+              <span className="ml-3 text-sm text-slate-500">
+                {fileCount === 0
+                  ? "No files selected"
+                  : `${fileCount} file${fileCount > 1 ? "s" : ""} selected`}
+              </span>
+
+              <input
                 id="attachments"
                 type="file"
                 name="attachments"
                 multiple
+                accept="image/*,application/pdf"
                 className="sr-only"
-            />
+                onChange={(e) =>
+                  setFileCount(e.target.files?.length ?? 0)
+                }
+              />
             </div>
           </div>
 
@@ -119,9 +130,6 @@ export function OnboardingForm({
             <label className="block text-sm font-medium text-slate-900">
               If your account is for business or creator use, describe the impact
             </label>
-            <p className="mt-1 text-sm text-slate-600">
-              Lost access, paused ads, audience reach, or revenue disruption.
-            </p>
             <textarea
               name="business_impact"
               rows={4}
@@ -134,11 +142,6 @@ export function OnboardingForm({
             <label className="block text-sm font-medium text-slate-900">
               Please confirm that you understand the scope of this service
             </label>
-            <p className="mt-2 text-sm text-slate-600">
-              This service includes document preparation and guidance only. You will
-              submit everything yourself. Platform response times and outcomes are
-              outside anyone’s control.
-            </p>
 
             <div className="mt-3 space-y-2 text-sm text-slate-700">
               <label className="flex items-center gap-2">

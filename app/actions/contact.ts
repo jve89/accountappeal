@@ -1,6 +1,7 @@
 "use server";
 
 import { Resend } from "resend";
+import { redirect } from "next/navigation";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -17,13 +18,14 @@ export async function sendContactEmail(formData: FormData) {
     from: "AccountAppeal <onboarding@resend.dev>",
     to: process.env.CONTACT_TO_EMAIL!,
     replyTo: email,
-    subject: `New inquiry from ${name}`,
-    text: `
-Name: ${name}
+    subject: `[Contact] ${name}`,
+    text: `Name: ${name}
 Email: ${email}
 
 Message:
-${message}
-    `.trim(),
+${message}`,
   });
+
+  // Confirmation page
+  redirect("/contact/submitted");
 }
