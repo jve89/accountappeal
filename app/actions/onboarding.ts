@@ -2,6 +2,7 @@
 
 import { Resend } from "resend";
 import { redirect } from "next/navigation";
+import { sendOnboardingConfirmationEmail } from "@/app/actions/onboardingConfirmation";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -35,6 +36,7 @@ export async function submitOnboarding(formData: FormData) {
     throw new Error("Missing required onboarding fields");
   }
 
+  // Admin intake email
   await resend.emails.send({
     from: "AccountAppeal <onboarding@resend.dev>",
     to: process.env.CONTACT_TO_EMAIL!,
@@ -56,6 +58,12 @@ ${payload.businessImpact || "N/A"}
 --- Scope confirmation ---
 ${payload.scopeConfirmation}
 `,
+  });
+
+  // Client confirmation email
+  await sendOnboardingConfirmationEmail({
+    email: payload.email,
+    tier: payload.tier,
   });
 
   redirect(`/onboarding/${payload.tier}/submitted`);

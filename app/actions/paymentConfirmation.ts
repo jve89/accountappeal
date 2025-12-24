@@ -10,11 +10,6 @@ export async function sendPaymentConfirmation(sessionId: string) {
 
   const session = await stripe.checkout.sessions.retrieve(sessionId);
 
-  console.log("Stripe session email fields:", {
-    customer_details: session.customer_details,
-    customer_email: session.customer_email,
-  });
-
   const email =
     session.customer_details?.email ??
     session.customer_email ??
@@ -30,11 +25,11 @@ export async function sendPaymentConfirmation(sessionId: string) {
     return;
   }
 
-  const tier = session.metadata?.tier ?? "basic";
+  const tier = (session.metadata?.tier ?? "basic").toUpperCase();
 
-  const onboardingUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/onboarding/${tier}?session_id=${sessionId}`;
+  const onboardingUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/onboarding/${tier.toLowerCase()}?session_id=${sessionId}`;
 
-  // ✅ DEV-SAFE RECIPIENT
+  // DEV-safe routing
   const recipient =
     process.env.NODE_ENV === "development"
       ? process.env.CONTACT_TO_EMAIL!
@@ -44,28 +39,74 @@ export async function sendPaymentConfirmation(sessionId: string) {
     from: "AccountAppeal <onboarding@resend.dev>",
     to: recipient,
     subject: "Payment received – next steps",
-    text: `
-Thank you for your payment.
+    html: `
+      <div style="font-family: Arial, Helvetica, sans-serif; background-color: #ffffff; padding: 32px; color: #0f172a;">
+        <!-- Header -->
+        <div style="margin-bottom: 32px;">
+          <img
+            src="https://accountappeal.com/logo-email.png"
+            alt="AccountAppeal"
+            height="40"
+            style="display: block;"
+          />
+        </div>
 
-Your ${tier.toUpperCase()} service is confirmed.
+        <!-- Body -->
+        <h1 style="font-size: 20px; font-weight: 600; margin-bottom: 16px;">
+          Payment received
+        </h1>
 
-Next step:
-Please complete the onboarding form so we can prepare your appeal properly.
+        <p style="font-size: 14px; line-height: 1.6; margin-bottom: 16px;">
+          Thank you for your payment. Your <strong>${tier}</strong> service is confirmed.
+        </p>
 
-You can do this now or later using this link:
-${onboardingUrl}
+        <p style="font-size: 14px; line-height: 1.6; margin-bottom: 16px;">
+          Next step: please complete the onboarding form so we can prepare your appeal properly.
+        </p>
 
-If you submit the form more than once, we will always use your latest submission.
+        <p style="margin-bottom: 24px;">
+          <a
+            href="${onboardingUrl}"
+            style="
+              display: inline-block;
+              background-color: #2563eb;
+              color: #ffffff;
+              text-decoration: none;
+              padding: 10px 16px;
+              border-radius: 6px;
+              font-size: 14px;
+              font-weight: 500;
+            "
+          >
+            Complete onboarding
+          </a>
+        </p>
 
-We typically respond within 48 hours.
+        <p style="font-size: 14px; line-height: 1.6; margin-bottom: 16px;">
+          You can complete the onboarding now or later.  
+          If you submit it more than once, we will always use your latest submission.
+        </p>
 
-— AccountAppeal
-`,
+        <p style="font-size: 14px; line-height: 1.6;">
+          We typically respond within 48 hours.
+        </p>
+
+        <!-- Footer -->
+        <hr style="margin: 32px 0; border: none; border-top: 1px solid #e5e7eb;" />
+
+        <p style="font-size: 12px; color: #64748b; line-height: 1.5;">
+          This email confirms your payment and explains the next step.
+          We prepare documents and provide guidance only. You submit all appeals yourself,
+          and outcomes depend solely on the platform.
+        </p>
+
+        <p style="font-size: 12px; color: #64748b; margin-top: 12px;">
+          © ${new Date().getFullYear()} AccountAppeal. All rights reserved.
+        </p>
+      </div>
+    `,
   });
 
-  console.log("Resend result:", result);
-
-  // ❗ ONLY mark sent if Resend succeeded
   if (!result.error) {
     await stripe.checkout.sessions.update(sessionId, {
       metadata: {
@@ -73,9 +114,5 @@ We typically respond within 48 hours.
         welcome_email_sent: "true",
       },
     });
-
-    console.log("Welcome email successfully sent and recorded:", sessionId);
-  } else {
-    console.error("Resend failed, NOT marking email as sent:", result.error);
   }
 }

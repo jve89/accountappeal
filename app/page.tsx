@@ -252,28 +252,67 @@ export default function HomePage() {
         title="FAQ"
         subtitle="Short, factual answers."
       >
-        <div className="space-y-4">
+        <div className="space-y-3">
           {[
             [
-              "Do you contact platforms for me?",
-              "No. You submit everything yourself through official channels.",
+              "Can you guarantee my account will be reinstated?",
+              "No. The final decision is always made by the platform. We help you present a clear, consistent, and well-structured appeal that avoids common mistakes and preserves escalation options.",
             ],
             [
-              "Do you guarantee reinstatement?",
-              "No. The goal is clarity, consistency, and avoiding preventable mistakes.",
+              "Do you contact platforms on my behalf?",
+              "No. You submit all appeals yourself through the platform’s official channels. We prepare the documents and guide you on when and how to submit them correctly.",
             ],
             [
-              "What do you need from me?",
-              "Screenshots, a timeline, and any messages shown by the platform.",
+              "How do I know which package is right for me?",
+              "Basic is suitable for a first, straightforward appeal. Standard adds structure and a follow-up strategy. Premium is for more complex situations or high-value accounts that require a full escalation plan. If you’re unsure, you can contact us before ordering.",
+            ],
+            [
+              "How long does the appeal process take?",
+              "The delivery time applies only to the documents we prepare. Platform response times vary widely and are outside anyone’s control. Reviews may take days or weeks, and silence is common.",
+            ],
+            [
+              "What do you need from me to get started?",
+              "After payment, you’ll receive an evidence checklist explaining exactly what information and screenshots to provide. You don’t need everything — we work with what’s available.",
+            ],
+            [
+              "What if I don’t have screenshots or complete evidence?",
+              "You can still proceed. Stronger evidence helps, but missing items are common. We’ll assess what’s possible based on what you can provide.",
+            ],
+            [
+              "Do you help with hacked or taken-over accounts?",
+              "No. This service is for accounts suspended or restricted by platform enforcement systems. Hacked or compromised accounts follow a different recovery process and are not covered.",
+            ],
+            [
+              "What is a follow-up appeal or escalation document?",
+              "If an initial appeal is ignored or receives a generic response, a follow-up appeal can request a proper review. In Premium cases, this may extend to formal complaints with relevant authorities when appropriate.",
             ],
           ].map(([q, a]) => (
-            <div
+            <details
               key={q}
-              className="rounded-lg border border-slate-200 bg-white p-5"
+              className="group rounded-lg border border-slate-200 bg-white p-5"
             >
-              <div className="font-medium text-slate-900">{q}</div>
-              <div className="mt-2 text-sm text-slate-600">{a}</div>
-            </div>
+              <summary className="flex cursor-pointer list-none items-center justify-between font-medium text-slate-900">
+                <span>{q}</span>
+
+                {/* Chevron */}
+                <span className="ml-4 flex h-6 w-6 items-center justify-center rounded-full border border-slate-300 text-slate-500 transition-transform duration-200 group-open:rotate-180">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="h-4 w-4"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </summary>
+
+              <p className="mt-3 text-sm text-slate-600">{a}</p>
+            </details>
           ))}
         </div>
       </Section>
@@ -281,7 +320,7 @@ export default function HomePage() {
       {/* CONTACT */}
       <section id="contact" className="scroll-mt-24 py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="rounded-lg bg-slate-50 p-8">
+          <div className="rounded-lg border border-slate-200 bg-white p-8">
             <div className="mx-auto max-w-xl">
               <form
                 action={sendContactEmail}

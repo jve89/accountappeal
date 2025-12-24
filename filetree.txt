@@ -7,6 +7,7 @@
 │   ├── actions
 │   │   ├── contact.ts
 │   │   ├── onboarding.ts
+│   │   ├── onboardingConfirmation.ts
 │   │   └── paymentConfirmation.ts
 │   ├── api
 │   │   └── checkout
@@ -50,6 +51,7 @@
 ├── package.json
 ├── postcss.config.mjs
 ├── public
+│   └── hero_1.png
 └── tsconfig.json
 
-18 directories, 35 files
+18 directories, 37 files
