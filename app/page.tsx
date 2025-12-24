@@ -98,29 +98,36 @@ export default function HomePage() {
       <Section
         id="process"
         title="How it works"
-        subtitle="A simple, careful process designed to reduce mistakes."
+        subtitle="A careful, step-by-step process designed to avoid preventable mistakes."
       >
         <ol className="grid gap-6 md:grid-cols-3">
           {[
             [
-              "1. Choose a package",
-              "Select the level of support that fits your situation.",
+              "1. Choose the right level of support",
+              "Select the package that matches the complexity and importance of your situation.",
             ],
             [
-              "2. Share the details",
-              "Complete the onboarding step so we can prepare the right materials.",
+              "2. Align on your case before anything is prepared",
+              "You complete a short onboarding. We review your situation, follow up where needed, and make sure everything is clear before moving forward.",
             ],
             [
-              "3. Submit carefully",
-              "You submit the appeal yourself through the platform’s official channels.",
+              "3. Submit with confidence",
+              "Once the documents and guidance are ready, you submit the appeal yourself through the platform’s official channels.",
             ],
           ].map(([title, desc]) => (
             <li
               key={title}
-              className="rounded-lg border border-slate-200 bg-white p-6"
+              className="flex flex-col rounded-lg border border-slate-200 bg-white p-6"
             >
-              <div className="font-medium text-slate-900">{title}</div>
-              <div className="mt-2 text-sm text-slate-600">{desc}</div>
+              {/* Title block — fixed visual height */}
+              <div className="min-h-[3.75rem] font-medium text-slate-900">
+                {title}
+              </div>
+
+              {/* Description — now aligned across all cards */}
+              <div className="mt-2 text-sm text-slate-600">
+                {desc}
+              </div>
             </li>
           ))}
         </ol>
