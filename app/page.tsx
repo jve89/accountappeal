@@ -12,18 +12,15 @@ export default function HomePage() {
             {/* Text */}
             <div>
               <h1 className="text-3xl font-medium tracking-tight text-slate-900 sm:text-4xl">
-                Social media account suspended without a clear explanation?
+                Your online platform account suspended without a clear explanation?
               </h1>
 
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-600">
-                If your account was restricted or suspended and the appeal process
-                feels unclear or inconsistent, we help you slow things down and
-                handle it properly.
+                If your account was restricted or suspended and the appeal process feels unclear or inconsistent, we help you slow things down, structure the situation clearly, and follow the appeal process correctly.
               </p>
 
               <p className="mt-2 max-w-2xl text-base leading-relaxed text-slate-600">
-                Many appeals fail not because the situation is bad — but because
-                messages are unclear, inconsistent, or sent at the wrong time.
+                Many appeals fail not because the situation is bad, but because messages are unclear, inconsistent, or submitted without proper context.
               </p>
 
               <div className="mt-8">
@@ -50,9 +47,9 @@ export default function HomePage() {
           {/* Supporting points */}
           <div className="mt-12 grid gap-6 md:grid-cols-3 text-m text-slate-700">
             {[
-              "No emotional appeals. No guessing.",
-              "Clear structure and consistent documents.",
-              "Designed to avoid preventable mistakes.",
+              "No emotional appeals. No guessing",
+              "Clear structure and consistent documentation",
+              "Designed to avoid preventable mistakes",
             ].map((t) => (
               <div
                 key={t}
@@ -79,12 +76,12 @@ export default function HomePage() {
               documents that are calm, factual, and consistent.
             </p>
             <ul className="list-disc space-y-2 pl-5">
-              <li>Personalised appeal drafted from your situation</li>
+              <li>Personalised appeal document drafted based on your situation</li>
               <li>Evidence checklist (what to gather — and what to avoid)</li>
               <li>Account summary to keep information consistent (Standard / Premium)</li>
-              <li>Follow-up appeal if appropriate (Standard / Premium)</li>
-              <li>regulatory / ombudsman complaint template (Premium)</li>
-              <li>Guidance to help you avoid weakening your position</li>
+              <li>Follow-up appeal document when appropriate (Standard / Premium)</li>
+              <li>Optional formal complaint document for applicable review bodies (Premium)</li>
+              <li>Guidance to help you avoid common mistakes that can undermine clarity or consistency</li>
             </ul>
 
             <p className="pt-4 text-sm text-slate-500">
@@ -141,7 +138,7 @@ export default function HomePage() {
       >
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-lg bg-slate-50 p-6">
-            <h3 className="font-medium text-slate-900">What this is</h3>
+            <h3 className="font-medium text-slate-900">This service does provide:</h3>
             <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-700">
               <li>Careful situation structuring</li>
               <li>Clear, neutral appeal writing</li>
@@ -151,12 +148,12 @@ export default function HomePage() {
           </div>
 
           <div className="rounded-lg bg-slate-50 p-6">
-            <h3 className="font-medium text-slate-900">What this is not</h3>
+            <h3 className="font-medium text-slate-900">This service does not provide:</h3>
             <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-700">
               <li>A guarantee of reinstatement</li>
               <li>Legal representation</li>
               <li>Direct contact with platforms</li>
-              <li>A shortcut or “inside access”</li>
+              <li>A shortcut, workaround or “inside access”</li>
             </ul>
           </div>
         </div>
@@ -177,15 +174,17 @@ export default function HomePage() {
           {/* BASIC */}
           <div className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-6">
             <div>
-              <div className="font-medium text-slate-900">Basic</div>
-              <div className="mt-1 text-sm text-slate-600">
-                Appeal document + evidence checklist + submission instructions
-              </div>
+              <div className="font-bold text-slate-900">Basic</div>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+                <li>Personalised appeal document</li>
+                <li>Evidence checklist</li>
+                <li>Submission instructions</li>
+              </ul>
             </div>
 
             <div className="flex-1" />
 
-            <div>
+            <div><br></br>
               <div className="text-2xl font-semibold text-slate-900">€XX</div>
               <form action="/api/checkout?tier=basic" method="POST">
                 <button
@@ -201,15 +200,20 @@ export default function HomePage() {
           {/* STANDARD */}
           <div className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-6">
             <div>
-              <div className="font-medium text-slate-900">Standard</div>
-              <div className="mt-1 text-sm text-slate-600">
-                Basic + account summary + follow-up appeal + guidance period
-              </div>
+              <div className="font-bold text-slate-900">Standard</div>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+                <li>Everything included in Basic</li>
+                <li>Account summary</li>
+                <li>Optional follow-up appeal document</li>
+                <li>
+                  Up to 30 days of active guidance or up to two guided submission cycles
+                </li>
+              </ul>
             </div>
 
             <div className="flex-1" />
 
-            <div>
+            <div><br></br>
               <div className="text-2xl font-semibold text-slate-900">€XX</div>
               <form action="/api/checkout?tier=standard" method="POST">
                 <button
@@ -225,15 +229,19 @@ export default function HomePage() {
           {/* PREMIUM */}
           <div className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-6">
             <div>
-              <div className="font-medium text-slate-900">Premium</div>
-              <div className="mt-1 text-sm text-slate-600">
-                Standard + Regulatory / Ombudsman complaint template + extended guidance
-              </div>
+              <div className="font-bold text-slate-900">Premium</div>
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-600">
+                <li>Everything included in Standard</li>
+                <li>Optional formal complaint document</li>
+                <li>
+                  Up to 90 days of active guidance or up to three guided submission cycles
+                </li>
+              </ul>
             </div>
 
             <div className="flex-1" />
 
-            <div>
+            <div><br></br>
               <div className="text-2xl font-semibold text-slate-900">€XX</div>
               <form action="/api/checkout?tier=premium" method="POST">
                 <button
@@ -255,7 +263,7 @@ export default function HomePage() {
           <p className="mt-2 text-sm text-slate-600">
             No guarantees. You submit all appeals yourself through official platform
             channels. AccountAppeal provides structured documentation and guidance only.
-            We do not offer legal representation, platform access, or submission services,
+            We do not offer legal representation, platform access, account recovery or submission services,
             and are not affiliated with any platform.
           </p>
         </div>
@@ -272,7 +280,7 @@ export default function HomePage() {
           {[
             [
               "Can you guarantee my account will be reinstated?",
-              "No. The final decision is always made by the platform. We help you present a clear, consistent, and well-structured appeal that avoids common mistakes and preserves escalation options.",
+              "No. The final decision is always made by the platform. We help you present a clear, consistent, and well-structured appeal that avoids common mistakes and preserves appropriate next-step options if needed.",
             ],
             [
               "Do you contact platforms on my behalf?",
@@ -300,7 +308,7 @@ export default function HomePage() {
             ],
             [
               "What is a follow-up appeal or escalation document?",
-              "If an initial appeal is ignored or receives a generic response, a follow-up appeal can request a proper review. In Premium cases, this may extend to formal complaints with relevant authorities when appropriate.",
+              "If an initial appeal is ignored or receives a generic response, a follow-up appeal can request a proper review. In Premium cases, this may extend to formal complaint templates for applicable review bodies when appropriate.",
             ],
           ].map(([q, a]) => (
             <details

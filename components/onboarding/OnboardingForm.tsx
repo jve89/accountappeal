@@ -19,12 +19,13 @@ export function OnboardingForm({
       {/* Header */}
       <div className="max-w-2xl">
         <h1 className="text-2xl font-medium tracking-tight text-slate-900 sm:text-3xl">
-          Onboarding – {tier.charAt(0).toUpperCase() + tier.slice(1)}
+          Onboarding ({tier.charAt(0).toUpperCase() + tier.slice(1)})
         </h1>
 
         <p className="mt-3 text-slate-600">
-          Please answer the questions below as factually and completely as possible.
-          This information is used to prepare your appeal documents.
+          Please answer the questions below as clearly and factually as possible. 
+          This information helps us understand your situation and determine the appropriate next steps before any documents are prepared.
+          Detailed evidence and materials are requested separately after onboarding using a structured checklist.
         </p>
       </div>
 
@@ -128,7 +129,7 @@ export function OnboardingForm({
           {/* Business impact */}
           <div>
             <label className="block text-sm font-medium text-slate-900">
-              If your account is for business or creator use, describe the impact
+              If your account is used for business or creator purposes, briefly describe any practical impact
             </label>
             <textarea
               name="business_impact"
@@ -167,8 +168,7 @@ export function OnboardingForm({
                     className="mt-1"
                 />
                 <span>
-                    I understand that all final decisions are made by the platform, and that my
-                    fee covers the professional time, expertise, and preparation involved.
+                    I understand that all final decisions are made by the platform, and that my fee covers professional time and document preparation as part of the service.
                 </span>
                 </label>
 
