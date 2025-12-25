@@ -17,9 +17,19 @@ export async function submitOnboarding(formData: FormData) {
   );
   const hasScreenshots = String(formData.get("has_screenshots") || "");
   const businessImpact = String(formData.get("business_impact") || "");
-  const scopeConfirmation = String(formData.get("scope_confirmation") || "");
 
-  if (!email || !suspensionDescription || !scopeConfirmation) {
+  // New scope acknowledgements (3 required checkboxes)
+  const scopeAck1 = formData.get("scope_ack_1");
+  const scopeAck2 = formData.get("scope_ack_2");
+  const scopeAck3 = formData.get("scope_ack_3");
+
+  if (
+    !email ||
+    !suspensionDescription ||
+    !scopeAck1 ||
+    !scopeAck2 ||
+    !scopeAck3
+  ) {
     throw new Error("Missing required onboarding fields");
   }
 
@@ -29,7 +39,10 @@ export async function submitOnboarding(formData: FormData) {
     throw new Error("Too many attachments");
   }
 
-  const attachments = [];
+  const attachments: {
+    filename: string;
+    content: string;
+  }[] = [];
 
   for (const file of files) {
     if (file.size > MAX_FILE_SIZE) {
@@ -46,8 +59,8 @@ export async function submitOnboarding(formData: FormData) {
     const buffer = Buffer.from(await file.arrayBuffer());
 
     attachments.push({
-    filename: file.name,
-    content: buffer.toString("base64"),
+      filename: file.name,
+      content: buffer.toString("base64"),
     });
   }
 
@@ -74,8 +87,11 @@ ${hasScreenshots}
 --- Business impact ---
 ${businessImpact || "N/A"}
 
---- Scope confirmation ---
-${scopeConfirmation}`,
+--- Scope acknowledgements ---
+• No guarantee of reinstatement acknowledged
+• Platform decision authority acknowledged
+• Information accuracy confirmed
+`,
     attachments,
   });
 

@@ -137,32 +137,56 @@ export function OnboardingForm({
             />
           </div>
 
-          {/* Scope confirmation */}
-          <div className="rounded-lg border border-slate-200 bg-slate-50 p-5">
+        {/* Scope confirmation */}
+        <div className="rounded-lg border border-slate-200 bg-slate-50 p-5">
             <label className="block text-sm font-medium text-slate-900">
-              Please confirm that you understand the scope of this service
+                Please confirm your agreement to the following
             </label>
 
-            <div className="mt-3 space-y-2 text-sm text-slate-700">
-              <label className="flex items-center gap-2">
+            <div className="mt-4 space-y-3 text-sm text-slate-700">
+                <label className="flex items-start gap-3">
                 <input
-                  type="radio"
-                  name="scope_confirmation"
-                  value="understand"
-                  required
+                    type="checkbox"
+                    name="scope_acknowledgement"
+                    value="no_guarantee"
+                    required
+                    className="mt-1"
                 />
-                Yes, I understand
-              </label>
-              <label className="flex items-center gap-2">
+                <span>
+                    I understand that AccountAppeal provides document preparation and guidance
+                    only and does not guarantee account reinstatement.
+                </span>
+                </label>
+
+                <label className="flex items-start gap-3">
                 <input
-                  type="radio"
-                  name="scope_confirmation"
-                  value="clarification"
+                    type="checkbox"
+                    name="scope_acknowledgement"
+                    value="platform_decision"
+                    required
+                    className="mt-1"
                 />
-                I understand, but I need clarification before we proceed
-              </label>
+                <span>
+                    I understand that all final decisions are made by the platform, and that my
+                    fee covers the professional time, expertise, and preparation involved.
+                </span>
+                </label>
+
+                <label className="flex items-start gap-3">
+                <input
+                    type="checkbox"
+                    name="scope_acknowledgement"
+                    value="truthful_information"
+                    required
+                    className="mt-1"
+                />
+                <span>
+                    I confirm that the information I am providing is truthful and factual to the
+                    best of my knowledge.
+                </span>
+                </label>
             </div>
-          </div>
+        </div>
 
           {/* Submit */}
           <div className="pt-4">
