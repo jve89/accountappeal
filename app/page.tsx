@@ -29,7 +29,7 @@ export default function HomePage() {
               <div className="mt-8">
                 <a
                   href="#pricing"
-                  className="inline-flex items-center justify-center rounded-md bg-blue-600 px-6 py-3 text-sm font-medium text-white hover:bg-blue-700"
+                  className="inline-flex items-center justify-center rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white hover:bg-blue-700"
                 >
                   View pricing & next steps
                 </a>
@@ -56,7 +56,7 @@ export default function HomePage() {
             ].map((t) => (
               <div
                 key={t}
-                className="rounded-lg bg-slate-50 px-5 py-6 text-center font-medium text-slate-800 leading-relaxed"
+                className="rounded-lg bg-slate-50 px-5 py-6 text-center font-semibold text-slate-800 leading-relaxed"
               >
                 {t}
               </div>
@@ -83,7 +83,7 @@ export default function HomePage() {
               <li>Evidence checklist (what to gather — and what to avoid)</li>
               <li>Account summary to keep information consistent (Standard / Premium)</li>
               <li>Follow-up appeal if appropriate (Standard / Premium)</li>
-              <li>External complaint or escalation document when included (Premium)</li>
+              <li>regulatory / ombudsman complaint template (Premium)</li>
               <li>Guidance to help you avoid weakening your position</li>
             </ul>
 
@@ -227,7 +227,7 @@ export default function HomePage() {
             <div>
               <div className="font-medium text-slate-900">Premium</div>
               <div className="mt-1 text-sm text-slate-600">
-                Standard + external complaint or escalation document + extended guidance
+                Standard + Regulatory / Ombudsman complaint template + extended guidance
               </div>
             </div>
 
@@ -247,10 +247,19 @@ export default function HomePage() {
           </div>
         </div>
 
-        <p className="mt-6 text-sm text-slate-600">
-          No guarantees. You submit appeals yourself. We provide structured documents
-          and guidance only.
-        </p>
+        <div className="mt-10 rounded-md border border-slate-200 bg-white p-4">
+          <p className="text-sm font-bold text-slate-900">
+            Final disclaimer
+          </p>
+
+          <p className="mt-2 text-sm text-slate-600">
+            No guarantees. You submit all appeals yourself through official platform
+            channels. AccountAppeal provides structured documentation and guidance only.
+            We do not offer legal representation, platform access, or submission services,
+            and are not affiliated with any platform.
+          </p>
+        </div>
+
       </Section>
 
       {/* FAQ */}
