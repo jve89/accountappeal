@@ -10,12 +10,17 @@ export default async function BasicOnboardingPage({
   const params = await searchParams;
   const sessionId = params.session_id;
 
-  let email: string | null = null;
+let email: string | null = null;
 
-  if (sessionId) {
+if (sessionId) {
+  try {
     await sendPaymentConfirmation(sessionId);
     email = await getCheckoutEmail(sessionId);
+  } catch (err) {
+    // Do not block onboarding if payment confirmation fails
+    console.error("Payment confirmation failed:", err);
   }
+}
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-16 space-y-8">

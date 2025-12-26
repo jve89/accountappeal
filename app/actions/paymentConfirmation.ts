@@ -1,12 +1,14 @@
 "use server";
 
 import { Resend } from "resend";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendPaymentConfirmation(sessionId: string) {
   console.log("sendPaymentConfirmation called with:", sessionId);
+
+  const stripe = getStripe();
 
   const session = await stripe.checkout.sessions.retrieve(sessionId);
 
