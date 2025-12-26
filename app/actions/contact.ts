@@ -15,7 +15,7 @@ export async function sendContactEmail(formData: FormData) {
   }
 
   await resend.emails.send({
-    from: "AccountAppeal <onboarding@resend.dev>",
+    from: "AccountAppeal <no-reply@mail.accountappeal.net>",
     to: process.env.CONTACT_TO_EMAIL!,
     replyTo: email,
     subject: `[Contact] ${name}`,
@@ -26,6 +26,5 @@ Message:
 ${message}`,
   });
 
-  // Confirmation page
   redirect("/contact/submitted");
 }
