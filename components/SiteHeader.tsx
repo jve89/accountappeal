@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { nav, site } from "@/lib/site";
 
 export function SiteHeader() {
@@ -9,13 +10,22 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         {/* Brand */}
         <Link
           href="/"
-          className="text-sm font-medium tracking-tight text-slate-900"
+          aria-label={site.name}
+          className="flex items-center"
         >
-          {site.name}
+          <Image
+            src="/logo_header.svg"
+            alt={`${site.name} logo`}
+            width={500}
+            height={120}
+            priority
+            className="h-10 w-auto sm:h-11"
+          />
+          <span className="sr-only">{site.name}</span>
         </Link>
 
         {/* Desktop navigation */}
@@ -46,7 +56,6 @@ export function SiteHeader() {
           onClick={() => setOpen((v) => !v)}
           className="inline-flex items-center justify-center rounded-md border border-slate-300 p-2 text-slate-700 hover:bg-slate-50 md:hidden"
         >
-          {/* Hamburger icon */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -76,7 +85,7 @@ export function SiteHeader() {
       {/* Mobile menu panel */}
       {open && (
         <div className="border-t border-slate-200 bg-white md:hidden">
-          <nav className="mx-auto max-w-5xl px-6 py-4 space-y-3 text-sm text-slate-700">
+          <nav className="mx-auto max-w-5xl space-y-3 px-6 py-4 text-sm text-slate-700">
             {nav.map((item) => (
               <a
                 key={item.href}
