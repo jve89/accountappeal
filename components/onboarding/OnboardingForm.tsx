@@ -89,7 +89,9 @@ export function OnboardingForm({
             </div>
           </div>
 
-          {/* Uploads */}
+
+          {/*
+          {Uploads}
           <div>
             <label className="block text-sm font-medium text-slate-900">
               Upload screenshots or messages (optional)
@@ -125,6 +127,8 @@ export function OnboardingForm({
               />
             </div>
           </div>
+        */}
+
 
           {/* Business impact */}
           <div>

@@ -4,6 +4,15 @@ import { sendContactEmail } from "@/app/actions/contact";
 export default function HomePage() {
   return (
     <>
+
+      {/* LAUNCH NOTICE */}
+      <div className="w-full bg-blue-50 border-b border-blue-200">
+        <div className="mx-auto max-w-5xl px-6 py-3 text-center text-sm font-medium text-blue-900">
+          🚧 We’re preparing our official launch. Services will open soon.
+        </div>
+      </div>
+
+
      {/* HERO */}
       <section className="bg-white">
         <div className="mx-auto max-w-5xl px-6 py-20">
