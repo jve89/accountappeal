@@ -1,9 +1,6 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-
 export async function POST(req: Request) {
   const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
   const priceBasic = process.env.STRIPE_PRICE_BASIC;
@@ -13,9 +10,12 @@ export async function POST(req: Request) {
   if (!stripeSecretKey || !priceBasic || !priceStandard || !pricePremium) {
     return NextResponse.json(
       { error: "Payment system not configured" },
-      { status: 500 }
+      { status: 503 }
     );
   }
+
+  const BASE_URL =
+    process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
   const stripe = new Stripe(stripeSecretKey);
 
@@ -38,17 +38,14 @@ export async function POST(req: Request) {
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
     customer_creation: "always",
-
     line_items: [
       {
         price: PRICE_BY_TIER[tier],
         quantity: 1,
       },
     ],
-
     success_url: `${BASE_URL}/onboarding/${tier}?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${BASE_URL}/pricing`,
-
     metadata: {
       tier,
       welcome_email_sent: "false",
