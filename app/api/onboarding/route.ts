@@ -64,7 +64,7 @@ export async function POST(req: Request) {
     /* ---------- ADMIN EMAIL ---------- */
 
     await resend.emails.send({
-      from: "AccountAppeal <onboarding@resend.dev>",
+      from: "AccountAppeal <onboarding@mail.accountappeal.net>",
       to: process.env.CONTACT_TO_EMAIL!,
       replyTo: email,
       subject: `[Onboarding] ${tier} – ${email}`,
@@ -85,19 +85,7 @@ ${businessImpact || "N/A"}
       attachments,
     });
 
-    /* ---------- CLIENT CONFIRMATION ---------- */
-
-    await resend.emails.send({
-      from: "AccountAppeal <onboarding@resend.dev>",
-      to: email,
-      subject: "Onboarding received",
-      text: `Thank you. We’ve received your onboarding for the ${tier} service.`,
-    });
-
-    /* ---------- CRITICAL FIX ----------
-       303 forces POST → GET redirect
-       Prevents 405 Method Not Allowed
-    ---------------------------------- */
+    /* ---------- REDIRECT ---------- */
 
     return NextResponse.redirect(
       new URL(`/onboarding/${tier}/submitted`, req.url),

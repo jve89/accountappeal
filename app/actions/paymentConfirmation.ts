@@ -38,15 +38,16 @@ export async function sendPaymentConfirmation(sessionId: string) {
       : email;
 
   const result = await resend.emails.send({
-    from: "AccountAppeal <onboarding@resend.dev>",
+    from: "AccountAppeal <onboarding@mail.accountappeal.net>", // ← FIX
     to: recipient,
+    replyTo: "support@accountappeal.net", // ← ADD
     subject: "Payment received – next steps",
     html: `
       <div style="font-family: Arial, Helvetica, sans-serif; background-color: #ffffff; padding: 32px; color: #0f172a;">
         <!-- Header -->
         <div style="margin-bottom: 32px;">
           <img
-            src="https://accountappeal.com/logo-email.png"
+            src="https://accountappeal.net/logo_email.png"
             alt="AccountAppeal"
             height="40"
             style="display: block;"
