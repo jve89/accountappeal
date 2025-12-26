@@ -18,18 +18,10 @@ export async function submitOnboarding(formData: FormData) {
   const hasScreenshots = String(formData.get("has_screenshots") || "");
   const businessImpact = String(formData.get("business_impact") || "");
 
-  // New scope acknowledgements (3 required checkboxes)
-  const scopeAck1 = formData.get("scope_ack_1");
-  const scopeAck2 = formData.get("scope_ack_2");
-  const scopeAck3 = formData.get("scope_ack_3");
+  // ✅ FIX: read checkbox group correctly
+  const scopeAcks = formData.getAll("scope_acknowledgement");
 
-  if (
-    !email ||
-    !suspensionDescription ||
-    !scopeAck1 ||
-    !scopeAck2 ||
-    !scopeAck3
-  ) {
+  if (!email || !suspensionDescription || scopeAcks.length !== 3) {
     throw new Error("Missing required onboarding fields");
   }
 
@@ -66,7 +58,7 @@ export async function submitOnboarding(formData: FormData) {
 
   const receivedAt = new Date().toISOString();
 
-  // Admin intake email (WITH attachments)
+  // Admin intake email
   await resend.emails.send({
     from: "AccountAppeal <onboarding@resend.dev>",
     to: process.env.CONTACT_TO_EMAIL!,
@@ -95,7 +87,7 @@ ${businessImpact || "N/A"}
     attachments,
   });
 
-  // Client confirmation email (NO attachments)
+  // Client confirmation email
   await sendOnboardingConfirmationEmail({
     email,
     tier: tier as "basic" | "standard" | "premium",
