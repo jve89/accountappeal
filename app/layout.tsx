@@ -7,6 +7,9 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: site.name,
   description: "Account appeal assistance. Clear steps, clean documents.",
+  alternates: {
+    canonical: "https://www.accountappeal.net",
+  },
 };
 
 export default function RootLayout({

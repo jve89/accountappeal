@@ -3,7 +3,5 @@ Allow: /
 
 Disallow: /api/
 Disallow: /_next/
-Disallow: /admin/
-Disallow: /dashboard/
 
-Sitemap: https://accountappeal.net/sitemap.xml
+Sitemap: https://www.accountappeal.net/sitemap.xml
