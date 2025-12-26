@@ -1,16 +1,30 @@
 import { NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import Stripe from "stripe";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
-const PRICE_BY_TIER: Record<string, string> = {
-  basic: process.env.STRIPE_PRICE_BASIC!,
-  standard: process.env.STRIPE_PRICE_STANDARD!,
-  premium: process.env.STRIPE_PRICE_PREMIUM!,
-};
-
 export async function POST(req: Request) {
+  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+  const priceBasic = process.env.STRIPE_PRICE_BASIC;
+  const priceStandard = process.env.STRIPE_PRICE_STANDARD;
+  const pricePremium = process.env.STRIPE_PRICE_PREMIUM;
+
+  if (!stripeSecretKey || !priceBasic || !priceStandard || !pricePremium) {
+    return NextResponse.json(
+      { error: "Payment system not configured" },
+      { status: 500 }
+    );
+  }
+
+  const stripe = new Stripe(stripeSecretKey);
+
+  const PRICE_BY_TIER: Record<string, string> = {
+    basic: priceBasic,
+    standard: priceStandard,
+    premium: pricePremium,
+  };
+
   const { searchParams } = new URL(req.url);
   const tier = searchParams.get("tier");
 
@@ -23,8 +37,6 @@ export async function POST(req: Request) {
 
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
-
-    // 🔒 CRITICAL: force email collection + persistence
     customer_creation: "always",
 
     line_items: [
