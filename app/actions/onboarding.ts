@@ -18,14 +18,25 @@ export async function submitOnboarding(formData: FormData) {
   const hasScreenshots = String(formData.get("has_screenshots") || "");
   const businessImpact = String(formData.get("business_impact") || "");
 
-  // ✅ FIX: read checkbox group correctly
-  const scopeAcks = formData.getAll("scope_acknowledgement");
+  // ✅ Correct checkbox handling (matches form names)
+  const scopeAck1 = formData.get("scope_ack_1");
+  const scopeAck2 = formData.get("scope_ack_2");
+  const scopeAck3 = formData.get("scope_ack_3");
 
-  if (!email || !suspensionDescription || scopeAcks.length !== 3) {
+  if (
+    !email ||
+    !suspensionDescription ||
+    !scopeAck1 ||
+    !scopeAck2 ||
+    !scopeAck3
+  ) {
     throw new Error("Missing required onboarding fields");
   }
 
-  const files = formData.getAll("attachments") as File[];
+  // ✅ CRITICAL FIX: safely read optional file uploads
+  const files = formData
+    .getAll("attachments")
+    .filter((f): f is File => f instanceof File && f.size > 0);
 
   if (files.length > MAX_FILES) {
     throw new Error("Too many attachments");
@@ -58,7 +69,7 @@ export async function submitOnboarding(formData: FormData) {
 
   const receivedAt = new Date().toISOString();
 
-  // Admin intake email
+  // Admin intake email (attachments included)
   await resend.emails.send({
     from: "AccountAppeal <onboarding@resend.dev>",
     to: process.env.CONTACT_TO_EMAIL!,
@@ -87,7 +98,7 @@ ${businessImpact || "N/A"}
     attachments,
   });
 
-  // Client confirmation email
+  // Client confirmation email (no attachments)
   await sendOnboardingConfirmationEmail({
     email,
     tier: tier as "basic" | "standard" | "premium",
