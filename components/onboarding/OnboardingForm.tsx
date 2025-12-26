@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { submitOnboarding } from "@/app/actions/onboarding";
 
 type Tier = "basic" | "standard" | "premium";
 
@@ -31,7 +30,11 @@ export function OnboardingForm({
 
       {/* Form card */}
       <div className="mt-10 rounded-lg border border-slate-200 bg-white p-8">
-        <form action={submitOnboarding} encType="multipart/form-data" className="space-y-10">
+        <form
+          action="/api/onboarding"
+          method="POST"
+          encType="multipart/form-data"
+        >
           <input type="hidden" name="tier" value={tier} />
 
           {/* Email */}
