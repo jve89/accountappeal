@@ -18,7 +18,6 @@ export async function submitOnboarding(formData: FormData) {
   const hasScreenshots = String(formData.get("has_screenshots") || "");
   const businessImpact = String(formData.get("business_impact") || "");
 
-  // ✅ Correct checkbox handling (matches form names)
   const scopeAck1 = formData.get("scope_ack_1");
   const scopeAck2 = formData.get("scope_ack_2");
   const scopeAck3 = formData.get("scope_ack_3");
@@ -30,53 +29,42 @@ export async function submitOnboarding(formData: FormData) {
     !scopeAck2 ||
     !scopeAck3
   ) {
-    throw new Error("Missing required onboarding fields");
+    // ❗ NEVER throw — redirect instead
+    redirect(`/onboarding/${tier}?error=missing_fields`);
   }
 
-  // ✅ CRITICAL FIX: safely read optional file uploads
-  const files = formData
-    .getAll("attachments")
-    .filter((f): f is File => f instanceof File && f.size > 0);
+  /* ---------- SAFE FILE HANDLING ---------- */
 
-  if (files.length > MAX_FILES) {
-    throw new Error("Too many attachments");
-  }
+  const rawFiles = formData.getAll("attachments");
+  const attachments: { filename: string; content: string }[] = [];
 
-  const attachments: {
-    filename: string;
-    content: string;
-  }[] = [];
-
-  for (const file of files) {
-    if (file.size > MAX_FILE_SIZE) {
-      throw new Error(`File too large: ${file.name}`);
-    }
-
+  for (const item of rawFiles) {
+    if (!(item instanceof File)) continue;
+    if (!item.size) continue;
+    if (attachments.length >= MAX_FILES) break;
+    if (item.size > MAX_FILE_SIZE) continue;
     if (
-      !file.type.startsWith("image/") &&
-      file.type !== "application/pdf"
-    ) {
-      throw new Error(`Invalid file type: ${file.name}`);
-    }
+      !item.type.startsWith("image/") &&
+      item.type !== "application/pdf"
+    )
+      continue;
 
-    const buffer = Buffer.from(await file.arrayBuffer());
+    const buffer = Buffer.from(await item.arrayBuffer());
 
     attachments.push({
-      filename: file.name,
+      filename: item.name,
       content: buffer.toString("base64"),
     });
   }
 
-  const receivedAt = new Date().toISOString();
+  /* ---------- EMAILS ---------- */
 
-  // Admin intake email (attachments included)
   await resend.emails.send({
     from: "AccountAppeal <onboarding@resend.dev>",
     to: process.env.CONTACT_TO_EMAIL!,
     replyTo: email,
     subject: `[Onboarding] ${tier} – ${email}`,
     text: `NEW ONBOARDING SUBMISSION
-Received: ${receivedAt}
 
 Tier: ${tier}
 Client email: ${email}
@@ -89,16 +77,10 @@ ${hasScreenshots}
 
 --- Business impact ---
 ${businessImpact || "N/A"}
-
---- Scope acknowledgements ---
-• No guarantee of reinstatement acknowledged
-• Platform decision authority acknowledged
-• Information accuracy confirmed
 `,
     attachments,
   });
 
-  // Client confirmation email (no attachments)
   await sendOnboardingConfirmationEmail({
     email,
     tier: tier as "basic" | "standard" | "premium",
