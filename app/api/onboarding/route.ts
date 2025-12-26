@@ -32,7 +32,8 @@ export async function POST(req: Request) {
       !scopeAck3
     ) {
       return NextResponse.redirect(
-        new URL(`/onboarding/${tier}?error=missing_fields`, req.url)
+        new URL(`/onboarding/${tier}?error=missing_fields`, req.url),
+        303
       );
     }
 
@@ -93,14 +94,21 @@ ${businessImpact || "N/A"}
       text: `Thank you. We’ve received your onboarding for the ${tier} service.`,
     });
 
+    /* ---------- CRITICAL FIX ----------
+       303 forces POST → GET redirect
+       Prevents 405 Method Not Allowed
+    ---------------------------------- */
+
     return NextResponse.redirect(
-      new URL(`/onboarding/${tier}/submitted`, req.url)
+      new URL(`/onboarding/${tier}/submitted`, req.url),
+      303
     );
   } catch (err) {
     console.error("Onboarding upload failed:", err);
 
     return NextResponse.redirect(
-      new URL(`/onboarding/error`, req.url)
+      new URL(`/onboarding/error`, req.url),
+      303
     );
   }
 }

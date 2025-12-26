@@ -22,9 +22,11 @@ export function OnboardingForm({
         </h1>
 
         <p className="mt-3 text-slate-600">
-          Please answer the questions below as clearly and factually as possible. 
-          This information helps us understand your situation and determine the appropriate next steps before any documents are prepared.
-          Detailed evidence and materials are requested separately after onboarding using a structured checklist.
+          Please answer the questions below as clearly and factually as possible.
+          This information helps us understand your situation and determine the
+          appropriate next steps before any documents are prepared. Detailed
+          evidence and materials are requested separately after onboarding using
+          a structured checklist.
         </p>
       </div>
 
@@ -34,6 +36,7 @@ export function OnboardingForm({
           action="/api/onboarding"
           method="POST"
           encType="multipart/form-data"
+          className="space-y-10"
         >
           <input type="hidden" name="tier" value={tier} />
 
@@ -60,8 +63,8 @@ export function OnboardingForm({
               Please describe the situation that led to your suspension
             </label>
             <p className="mt-1 text-sm text-slate-600">
-              What happened before it, any messages you received, when it occurred,
-              and relevant context about your account. Stick to facts.
+              What happened before it, any messages you received, when it
+              occurred, and relevant context about your account. Stick to facts.
             </p>
             <textarea
               name="suspension_description"
@@ -132,7 +135,8 @@ export function OnboardingForm({
           {/* Business impact */}
           <div>
             <label className="block text-sm font-medium text-slate-900">
-              If your account is used for business or creator purposes, briefly describe any practical impact
+              If your account is used for business or creator purposes, briefly
+              describe any practical impact
             </label>
             <textarea
               name="business_impact"
@@ -141,53 +145,55 @@ export function OnboardingForm({
             />
           </div>
 
-        {/* Scope confirmation */}
-        <div className="rounded-lg border border-slate-200 bg-slate-50 p-5">
-          <label className="block text-sm font-medium text-slate-900">
-            Please confirm your agreement to the following
-          </label>
-
-          <div className="mt-4 space-y-3 text-sm text-slate-700">
-            <label className="flex items-start gap-3">
-              <input
-                type="checkbox"
-                name="scope_ack_1"
-                required
-                className="mt-1"
-              />
-              <span>
-                I understand that AccountAppeal provides document preparation and guidance
-                only and does not guarantee account reinstatement.
-              </span>
+          {/* Scope confirmation */}
+          <div className="rounded-lg border border-slate-200 bg-slate-50 p-5">
+            <label className="block text-sm font-medium text-slate-900">
+              Please confirm your agreement to the following
             </label>
 
-            <label className="flex items-start gap-3">
-              <input
-                type="checkbox"
-                name="scope_ack_2"
-                required
-                className="mt-1"
-              />
-              <span>
-                I understand that all final decisions are made by the platform, and that my
-                fee covers professional time and document preparation as part of the service.
-              </span>
-            </label>
+            <div className="mt-4 space-y-3 text-sm text-slate-700">
+              <label className="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  name="scope_ack_1"
+                  required
+                  className="mt-1"
+                />
+                <span>
+                  I understand that AccountAppeal provides document preparation
+                  and guidance only and does not guarantee account
+                  reinstatement.
+                </span>
+              </label>
 
-            <label className="flex items-start gap-3">
-              <input
-                type="checkbox"
-                name="scope_ack_3"
-                required
-                className="mt-1"
-              />
-              <span>
-                I confirm that the information I am providing is truthful and factual to the
-                best of my knowledge.
-              </span>
-            </label>
+              <label className="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  name="scope_ack_2"
+                  required
+                  className="mt-1"
+                />
+                <span>
+                  I understand that all final decisions are made by the platform,
+                  and that my fee covers professional time and document
+                  preparation as part of the service.
+                </span>
+              </label>
+
+              <label className="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  name="scope_ack_3"
+                  required
+                  className="mt-1"
+                />
+                <span>
+                  I confirm that the information I am providing is truthful and
+                  factual to the best of my knowledge.
+                </span>
+              </label>
+            </div>
           </div>
-        </div>
 
           {/* Submit */}
           <div className="pt-4">
