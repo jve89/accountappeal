@@ -6,12 +6,18 @@
 ├── app
 │   ├── actions
 │   │   ├── contact.ts
-│   │   ├── onboarding.ts
 │   │   ├── onboardingConfirmation.ts
 │   │   └── paymentConfirmation.ts
 │   ├── api
-│   │   └── checkout
+│   │   ├── checkout
+│   │   │   └── route.ts
+│   │   └── onboarding
 │   │       └── route.ts
+│   ├── company
+│   │   └── page.tsx
+│   ├── contact
+│   │   └── submitted
+│   │       └── page.tsx
 │   ├── favicon.ico
 │   ├── globals.css
 │   ├── layout.tsx
@@ -51,7 +57,10 @@
 ├── package.json
 ├── postcss.config.mjs
 ├── public
-│   └── hero_1.png
+│   ├── hero_1.png
+│   ├── logo_email.png
+│   ├── logo_header.svg
+│   └── robots.txt
 └── tsconfig.json
 
-18 directories, 37 files
+22 directories, 42 files
