@@ -14,16 +14,16 @@ export async function sendOnboardingConfirmationEmail({
   const tierLabel = tier.charAt(0).toUpperCase() + tier.slice(1);
 
   await resend.emails.send({
-    from: "AccountAppeal <onboarding@mail.accountappeal.net>", // ← FIX
+    from: "AccountAppeal <onboarding@mail.accountappeal.net>", 
     to: email,
-    replyTo: "support@accountappeal.net", // ← ADD
+    replyTo: "support@accountappeal.net", 
     subject: "We received your onboarding information",
     html: `
       <div style="font-family: Arial, Helvetica, sans-serif; background-color: #ffffff; padding: 32px; color: #0f172a;">
         <!-- Header -->
         <div style="margin-bottom: 32px;">
           <img
-            src="https://accountappeal.net/logo_email.png" <!-- FIX -->
+            src="https://accountappeal.net/logo_email.png"
             alt="AccountAppeal"
             height="40"
             style="display: block;"

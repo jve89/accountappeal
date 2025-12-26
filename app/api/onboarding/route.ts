@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { sendOnboardingConfirmationEmail } from "@/app/actions/onboardingConfirmation";
 
 export const runtime = "nodejs";
 
@@ -83,6 +84,13 @@ ${hasScreenshots}
 ${businessImpact || "N/A"}
 `,
       attachments,
+    });
+
+    /* ---------- CLIENT CONFIRMATION ---------- */
+
+    await sendOnboardingConfirmationEmail({
+      email,
+      tier: tier as "basic" | "standard" | "premium",
     });
 
     /* ---------- REDIRECT ---------- */
