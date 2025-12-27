@@ -312,12 +312,12 @@ export default function HomePage() {
               "You can still proceed. Stronger evidence helps, but missing items are common. We’ll assess what’s possible based on what you can provide.",
             ],
             [
-              "Do you help with hacked or taken-over accounts?",
-              "No. This service is for accounts suspended or restricted by platform enforcement systems. Hacked or compromised accounts follow a different recovery process and are not covered.",
-            ],
-            [
               "What is a follow-up appeal or escalation document?",
               "If an initial appeal is ignored or receives a generic response, a follow-up appeal can request a proper review. In Premium cases, this may extend to formal complaint templates for applicable review bodies when appropriate.",
+            ],
+            [
+              "What types of cases do you not handle?",
+              "This service is limited to accounts suspended or restricted by platform enforcement systems. We do not assist with hacked or stolen account recovery, attempts to circumvent platform safeguards, false statements or fabricated evidence, impersonation, or urgent requests promising guaranteed outcomes. If a case falls into these categories, we will decline it.",
             ],
           ].map(([q, a]) => (
             <details

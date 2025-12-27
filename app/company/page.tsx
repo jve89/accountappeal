@@ -23,20 +23,35 @@ export default function CompanyPage() {
             </p>
           </section>
 
-          <section>
+            <section>
             <h2 className="font-medium text-slate-900">
-              2. Registration Details
+                2. Registration Details
             </h2>
+
             <p className="mt-2">
-              Registry code: 16654436
+                Registry code: <strong>16654436</strong>
             </p>
+
             <p className="mt-2">
-              Date of registration: 16 January 2023
+                Public registry record:{" "}
+                <a
+                href="https://ariregister.rik.ee/eng/company/16654436"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+                >
+                Estonian Business Register
+                </a>
             </p>
+
             <p className="mt-2">
-              VAT number: EE102744992
+                Date of registration: 16 January 2023
             </p>
-          </section>
+
+            <p className="mt-2">
+                VAT number: EE102744992
+            </p>
+            </section>
 
           <section>
             <h2 className="font-medium text-slate-900">
