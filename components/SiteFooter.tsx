@@ -8,7 +8,7 @@ export function SiteFooter() {
         <div className="grid gap-8 md:grid-cols-3">
           {/* Brand / description */}
           <div className="max-w-sm">
-            <div className="font-medium text-slate-900">
+            <div className="font-bold text-slate-900">
               {site.name}
             </div>
             <p className="mt-2 leading-relaxed">
@@ -19,7 +19,7 @@ export function SiteFooter() {
 
           {/* Sections */}
           <div className="text-center md:text-left">
-            <div className="text-sm font-medium text-slate-900">
+            <div className="text-sm font-bold text-slate-900">
               Sections
             </div>
             <ul className="mt-3 space-y-2">
@@ -58,7 +58,7 @@ export function SiteFooter() {
 
           {/* Legal */}
           <div className="text-center md:text-left">
-            <div className="text-sm font-medium text-slate-900">
+            <div className="text-sm font-bold text-slate-900">
               Legal
             </div>
             <ul className="mt-3 space-y-2">
@@ -75,6 +75,11 @@ export function SiteFooter() {
               <li>
                 <Link href="/company" className="hover:text-slate-900">
                   Company information
+                </Link>
+              </li>
+              <li>
+                <Link href="/process" className="hover:text-slate-900">
+                  How we structure an appeal
                 </Link>
               </li>
             </ul>
