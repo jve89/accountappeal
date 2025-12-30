@@ -78,7 +78,7 @@ export default function HomePage() {
         title="Who we are"
         subtitle="A careful, structured approach — handled by a real person, not an automated system."
       >
-        <div className="rounded-lg border border-slate-200 bg-white p-8">
+        <div className="rounded-lg border border-slate-200 bg-slate-50 p-8">
           <div className="space-y-4 text-slate-700">
             <p>
               AccountAppeal was created to address a recurring pattern: appeals often fail
@@ -103,19 +103,18 @@ export default function HomePage() {
               submissions, and guiding timing and wording — while keeping you fully in
               control of your account at all times.
             </p>
-
           </div>
-        </div>
 
-        {/* Optional portrait detail */}
-        <div className="mt-14 flex items-center justify-center gap-6">
-          <div className="h-px w-24 bg-slate-200" />
-          <img
-            src="/circle-portrait.png"
-            alt=""
-            className="h-40 w-40 rounded-full object-cover"
-          />
-          <div className="h-px w-24 bg-slate-200" />
+          {/* Portrait accent (optional) */}
+          <div className="mt-10 flex items-center justify-center gap-6">
+            <div className="h-px w-20 bg-slate-200" />
+            <img
+              src="/circle-portrait.png"
+              alt=""
+              className="h-40 w-40 rounded-full object-cover"
+            />
+            <div className="h-px w-20 bg-slate-200" />
+          </div>
         </div>
       </Section>
 
