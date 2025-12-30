@@ -24,6 +24,11 @@ export function SiteFooter() {
             </div>
             <ul className="mt-3 space-y-2">
               <li>
+                <a href="#who-we-are" className="hover:text-slate-900">
+                  Who we are
+                </a>
+              </li>
+              <li>
                 <a href="#services" className="hover:text-slate-900">
                   What we do
                 </a>

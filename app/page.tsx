@@ -72,6 +72,53 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* WHO WE ARE */}
+      <Section
+        id="who-we-are"
+        title="Who we are"
+        subtitle="A careful, structured approach — handled by a real person, not an automated system."
+      >
+        <div className="rounded-lg border border-slate-200 bg-white p-8">
+          <div className="space-y-4 text-slate-700">
+            <p>
+              AccountAppeal was created to address a recurring pattern: appeals often fail
+              not because a case is weak, but because it is presented in a way review systems
+              cannot reliably process.
+            </p>
+
+            <p>
+              This service is shaped by experience in aviation operations and regulatory
+              compliance — environments where outcomes depend on structured information,
+              traceability, and disciplined communication under review.
+            </p>
+
+            <p>
+              In those contexts, emotional language, improvisation, or inconsistent
+              documentation does not help — it increases risk. The same principles apply to
+              platform appeal processes.
+            </p>
+
+            <p>
+              We therefore focus on preparing clear documentation, aligning facts across
+              submissions, and guiding timing and wording — while keeping you fully in
+              control of your account at all times.
+            </p>
+
+          </div>
+        </div>
+
+        {/* Optional portrait detail */}
+        <div className="mt-14 flex items-center justify-center gap-6">
+          <div className="h-px w-24 bg-slate-200" />
+          <img
+            src="/circle-portrait.png"
+            alt=""
+            className="h-40 w-40 rounded-full object-cover"
+          />
+          <div className="h-px w-24 bg-slate-200" />
+        </div>
+      </Section>
+
       {/* WHAT WE DO */}
       <Section
         id="services"
