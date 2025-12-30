@@ -7,7 +7,7 @@ export function Section(props: {
   children?: ReactNode;
 }) {
   return (
-    <section id={props.id} className="scroll-mt-24 py-16">
+    <section id={props.id} className="scroll-mt-24 py-12">
       <div className="mx-auto max-w-5xl px-6">
         <div className="max-w-2xl">
           <h2 className="text-2xl font-medium tracking-tight text-slate-900 sm:text-3xl">
@@ -22,7 +22,7 @@ export function Section(props: {
         </div>
 
         {props.children ? (
-          <div className="mt-8">{props.children}</div>
+          <div className="mt-6">{props.children}</div>
         ) : null}
       </div>
     </section>

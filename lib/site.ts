@@ -20,6 +20,7 @@ export const site = {
 } as const;
 
 export const nav = [
+  { label: "Who we are", href: "#who-we-are" },
   { label: "What we do", href: "#services" },
   { label: "How it works", href: "#process" },
   { label: "What this is / is not", href: "#boundaries" },
