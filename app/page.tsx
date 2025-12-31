@@ -76,44 +76,40 @@ export default function HomePage() {
       <Section
         id="who-we-are"
         title="Who we are"
-        subtitle="A careful, structured approach — handled by a real person, not an automated system."
+        subtitle="A careful, structured approach — guided by human review, not automated decision-making."
       >
         <div className="rounded-lg border border-slate-200 bg-slate-50 p-8">
           <div className="space-y-4 text-slate-700">
-            <p>
-              AccountAppeal was created to address a recurring pattern: appeals often fail
-              not because a case is weak, but because it is presented in a way review systems
-              cannot reliably process.
-            </p>
+          <p>
+            <strong>Our work is based on a recurring observation</strong>
+          </p>
 
-            <p>
-              This service is shaped by experience in aviation operations and regulatory
-              compliance — environments where outcomes depend on structured information,
-              traceability, and disciplined communication under review.
-            </p>
+          <p>
+            Appeals often fail not because a case is weak, but because people act quickly under pressure and present information in a way review systems cannot reliably process.
+          </p>
 
-            <p>
-              In those contexts, emotional language, improvisation, or inconsistent
-              documentation does not help — it increases risk. The same principles apply to
-              platform appeal processes.
-            </p>
+          <p>
+            AccountAppeal was shaped by hands-on experience in aviation operations and regulatory compliance — environments where reviews are conducted by real assessors, decisions must be traceable, and wording, structure, and timing materially affect outcomes.
+          </p>
 
-            <p>
-              We therefore focus on preparing clear documentation, aligning facts across
-              submissions, and guiding timing and wording — while keeping you fully in
-              control of your account at all times.
-            </p>
+          <p>
+            In those contexts, emotional language, improvisation, or inconsistent documentation does not help. It increases risk. The same principles apply to platform appeal processes.
+          </p>
+
+          <p>
+            We therefore focus on preparing clear documentation, aligning facts across submissions, and guiding timing and wording — while keeping you fully in control of your account at all times.
+          </p>
           </div>
 
           {/* Portrait accent (optional) */}
           <div className="mt-10 flex items-center justify-center gap-6">
-            <div className="h-px w-20 bg-slate-200" />
+            <div className="h-px w-20 bg-slate-300" />
             <img
               src="/circle-portrait.png"
               alt=""
               className="h-40 w-40 rounded-full object-cover"
             />
-            <div className="h-px w-20 bg-slate-200" />
+            <div className="h-px w-20 bg-slate-300" />
           </div>
         </div>
       </Section>
@@ -240,7 +236,7 @@ export default function HomePage() {
             <div className="flex-1" />
 
             <div><br></br>
-              <div className="text-2xl font-semibold text-slate-900">€XX</div>
+              <div className="text-2xl font-semibold text-slate-900">$299</div>
               <form action="/api/checkout?tier=basic" method="POST">
                 <button
                   type="submit"
@@ -269,7 +265,7 @@ export default function HomePage() {
             <div className="flex-1" />
 
             <div><br></br>
-              <div className="text-2xl font-semibold text-slate-900">€XX</div>
+              <div className="text-2xl font-semibold text-slate-900">$599</div>
               <form action="/api/checkout?tier=standard" method="POST">
                 <button
                   type="submit"
@@ -297,7 +293,7 @@ export default function HomePage() {
             <div className="flex-1" />
 
             <div><br></br>
-              <div className="text-2xl font-semibold text-slate-900">€XX</div>
+              <div className="text-2xl font-semibold text-slate-900">$799</div>
               <form action="/api/checkout?tier=premium" method="POST">
                 <button
                   type="submit"
