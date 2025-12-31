@@ -15,6 +15,7 @@ export function OnboardingForm({
   prefillEmail?: string | null;
 }) {
   const [fileCount, setFileCount] = useState(0);
+  const [fileError, setFileError] = useState<string | null>(null);
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-20">
@@ -137,14 +138,25 @@ export function OnboardingForm({
                   );
 
                   if (tooManyFiles || tooLargeFile) {
-                    window.location.href = `/onboarding/limit-reached?tier=${tier}`;
+                    setFileError(
+                      "Maximum 5 files allowed. Each file must be 2 MB or smaller."
+                    );
+                    e.target.value = "";
+                    setFileCount(0);
                     return;
                   }
 
+                  setFileError(null);
                   setFileCount(files.length);
                 }}
               />
             </div>
+
+            {fileError && (
+              <p className="mt-2 text-sm text-red-600">
+                {fileError}
+              </p>
+            )}
           </div>
 
           {/* Business impact */}

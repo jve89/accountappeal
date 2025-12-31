@@ -15,9 +15,9 @@ export async function POST(req: Request) {
 
     const email = String(formData.get("email") || "");
     const tier =
-      String(formData.get("tier")) === "basic" ||
-      String(formData.get("tier")) === "premium" ||
-      String(formData.get("tier")) === "standard"
+      formData.get("tier") === "basic" ||
+      formData.get("tier") === "premium" ||
+      formData.get("tier") === "standard"
         ? String(formData.get("tier"))
         : "standard";
 
@@ -44,13 +44,13 @@ export async function POST(req: Request) {
       );
     }
 
-    /* ---------- FILE HANDLING ---------- */
+    /* ---------- FILE HANDLING (SERVER SAFETY) ---------- */
 
     const rawFiles = formData.getAll("attachments");
 
     if (rawFiles.length > MAX_FILES) {
       return NextResponse.redirect(
-        new URL(`/onboarding/limit-reached?tier=${tier}`, req.url),
+        new URL(`/onboarding?tier=${tier}&error=invalid_files`, req.url),
         303
       );
     }
@@ -63,7 +63,7 @@ export async function POST(req: Request) {
 
       if (item.size > MAX_FILE_SIZE) {
         return NextResponse.redirect(
-          new URL(`/onboarding/limit-reached?tier=${tier}`, req.url),
+          new URL(`/onboarding?tier=${tier}&error=invalid_files`, req.url),
           303
         );
       }
@@ -114,7 +114,7 @@ ${businessImpact || "N/A"}
       tier: tier as "basic" | "standard" | "premium",
     });
 
-    /* ---------- REDIRECT ---------- */
+    /* ---------- SUCCESS ---------- */
 
     return NextResponse.redirect(
       new URL(`/onboarding/submitted?tier=${tier}`, req.url),
