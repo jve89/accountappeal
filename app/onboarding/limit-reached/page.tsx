@@ -1,14 +1,10 @@
-type LimitReachedPageProps = {
-  searchParams?: Promise<{
-    tier?: string;
-  }>;
-};
+"use client";
 
-export default async function LimitReachedPage({
-  searchParams,
-}: LimitReachedPageProps) {
-  const params = await searchParams;
-  const tier = params?.tier ?? "standard";
+import { useSearchParams } from "next/navigation";
+
+export default function LimitReachedPage() {
+  const searchParams = useSearchParams();
+  const tier = searchParams.get("tier") ?? "standard";
 
   return (
     <section className="bg-white">
@@ -50,7 +46,8 @@ export default async function LimitReachedPage({
 
           <section>
             <p>
-              No information has been lost, and nothing has been submitted yet.
+              No information has been submitted yet. If this happened before
+              submitting the form, your entered information is still available.
             </p>
           </section>
 
@@ -83,12 +80,13 @@ export default async function LimitReachedPage({
           </section>
 
           <div className="pt-2">
-            <a
-              href={`/onboarding?tier=${tier}`}
+            <button
+              type="button"
+              onClick={() => window.history.back()}
               className="inline-flex rounded-md bg-blue-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-700"
             >
               Back to onboarding
-            </a>
+            </button>
           </div>
         </div>
       </div>
