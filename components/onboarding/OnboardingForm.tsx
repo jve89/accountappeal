@@ -4,6 +4,9 @@ import { useState } from "react";
 
 type Tier = "basic" | "standard" | "premium";
 
+const MAX_FILES = 5;
+const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2 MB
+
 export function OnboardingForm({
   tier,
   prefillEmail,
@@ -101,7 +104,7 @@ export function OnboardingForm({
               Upload screenshots or messages (optional)
             </label>
             <p className="mt-1 text-sm text-slate-600">
-              Images or PDFs only. Max 5 files, 5 MB each.
+              Images or PDFs only. Max 5 files, 2 MB each.
             </p>
 
             <div className="mt-3">
@@ -125,9 +128,21 @@ export function OnboardingForm({
                 multiple
                 accept="image/*,application/pdf"
                 className="sr-only"
-                onChange={(e) =>
-                  setFileCount(e.target.files?.length ?? 0)
-                }
+                onChange={(e) => {
+                  const files = Array.from(e.target.files ?? []);
+
+                  const tooManyFiles = files.length > MAX_FILES;
+                  const tooLargeFile = files.some(
+                    (file) => file.size > MAX_FILE_SIZE
+                  );
+
+                  if (tooManyFiles || tooLargeFile) {
+                    window.location.href = `/onboarding/limit-reached?tier=${tier}`;
+                    return;
+                  }
+
+                  setFileCount(files.length);
+                }}
               />
             </div>
           </div>

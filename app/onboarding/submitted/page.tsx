@@ -1,6 +1,22 @@
 import Link from "next/link";
 
-export default function PremiumOnboardingSubmittedPage() {
+type SubmittedPageProps = {
+  searchParams?: Promise<{
+    tier?: string;
+  }>;
+};
+
+export default async function OnboardingSubmittedPage({
+  searchParams,
+}: SubmittedPageProps) {
+  const params = await searchParams;
+  const tier =
+    params?.tier === "basic" ||
+    params?.tier === "premium" ||
+    params?.tier === "standard"
+      ? params.tier
+      : "standard";
+
   return (
     <main className="mx-auto max-w-3xl px-6 py-20">
       <div className="rounded-lg border border-slate-200 bg-white p-8 space-y-6">
@@ -14,17 +30,20 @@ export default function PremiumOnboardingSubmittedPage() {
         </p>
 
         <p className="text-slate-600">
-          We’ll review your onboarding information and contact you by email with the next steps before we proceed.
+          We’ll review your onboarding information and contact you by email with
+          the next steps before we proceed.
         </p>
 
         <p className="text-slate-600">
-          If anything is missing or unclear, we’ll go through it together in the next step. There’s no need to resubmit the onboarding form unless we specifically ask you to.
+          If anything is missing or unclear, we’ll go through it together in the
+          next step. There’s no need to resubmit the onboarding form unless we
+          specifically ask you to.
         </p>
 
         <p className="pt-2 text-sm text-slate-500">
-          Typical response time is within 48 hours. Platform response times and final
-          outcomes are outside anyone’s control. Our role is to present your situation
-          clearly, factually, and consistently.
+          Typical response time is within 48 hours. Platform response times and
+          final outcomes are outside anyone’s control. Our role is to present
+          your situation clearly, factually, and consistently.
         </p>
 
         <div className="pt-4">

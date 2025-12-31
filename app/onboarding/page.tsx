@@ -2,25 +2,36 @@ import { OnboardingForm } from "@/components/onboarding/OnboardingForm";
 import { getCheckoutEmail } from "@/lib/getCheckoutEmail";
 import { sendPaymentConfirmation } from "@/app/actions/paymentConfirmation";
 
-export default async function BasicOnboardingPage({
+type OnboardingPageProps = {
+  searchParams?: Promise<{
+    session_id?: string;
+    tier?: string;
+  }>;
+};
+
+export default async function OnboardingPage({
   searchParams,
-}: {
-  searchParams: Promise<{ session_id?: string }>;
-}) {
+}: OnboardingPageProps) {
   const params = await searchParams;
-  const sessionId = params.session_id;
+  const sessionId = params?.session_id;
+  const tier =
+    params?.tier === "basic" ||
+    params?.tier === "premium" ||
+    params?.tier === "standard"
+      ? params.tier
+      : "standard";
 
-let email: string | null = null;
+  let email: string | null = null;
 
-if (sessionId) {
-  try {
-    await sendPaymentConfirmation(sessionId);
-    email = await getCheckoutEmail(sessionId);
-  } catch (err) {
-    // Do not block onboarding if payment confirmation fails
-    console.error("Payment confirmation failed:", err);
+  if (sessionId) {
+    try {
+      await sendPaymentConfirmation(sessionId);
+      email = await getCheckoutEmail(sessionId);
+    } catch (err) {
+      // Do not block onboarding if payment confirmation fails
+      console.error("Payment confirmation failed:", err);
+    }
   }
-}
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-16 space-y-8">
@@ -36,7 +47,7 @@ if (sessionId) {
         </div>
       )}
 
-      <OnboardingForm tier="basic" prefillEmail={email} />
+      <OnboardingForm tier={tier} prefillEmail={email} />
     </main>
   );
 }

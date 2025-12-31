@@ -37,6 +37,8 @@
 │   ├── page.tsx
 │   ├── privacy
 │   │   └── page.tsx
+│   ├── process
+│   │   └── page.tsx
 │   └── terms
 │       └── page.tsx
 ├── components
@@ -57,10 +59,13 @@
 ├── package.json
 ├── postcss.config.mjs
 ├── public
+│   ├── circle-portrait.png
 │   ├── hero_1.png
 │   ├── logo_email.png
 │   ├── logo_header.svg
-│   └── robots.txt
+│   ├── robots.txt
+│   ├── sitemap.xml
+│   └── who-we-are.png
 └── tsconfig.json
 
-22 directories, 42 files
+23 directories, 46 files

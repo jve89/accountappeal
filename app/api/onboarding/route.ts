@@ -7,14 +7,20 @@ export const runtime = "nodejs";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const MAX_FILES = 5;
-const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB
+const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2 MB
 
 export async function POST(req: Request) {
   try {
     const formData = await req.formData();
 
     const email = String(formData.get("email") || "");
-    const tier = String(formData.get("tier") || "basic");
+    const tier =
+      String(formData.get("tier")) === "basic" ||
+      String(formData.get("tier")) === "premium" ||
+      String(formData.get("tier")) === "standard"
+        ? String(formData.get("tier"))
+        : "standard";
+
     const suspensionDescription = String(
       formData.get("suspension_description") || ""
     );
@@ -33,7 +39,7 @@ export async function POST(req: Request) {
       !scopeAck3
     ) {
       return NextResponse.redirect(
-        new URL(`/onboarding/${tier}?error=missing_fields`, req.url),
+        new URL(`/onboarding?tier=${tier}&error=missing_fields`, req.url),
         303
       );
     }
@@ -41,18 +47,33 @@ export async function POST(req: Request) {
     /* ---------- FILE HANDLING ---------- */
 
     const rawFiles = formData.getAll("attachments");
+
+    if (rawFiles.length > MAX_FILES) {
+      return NextResponse.redirect(
+        new URL(`/onboarding/limit-reached?tier=${tier}`, req.url),
+        303
+      );
+    }
+
     const attachments: { filename: string; content: string }[] = [];
 
     for (const item of rawFiles) {
       if (!(item instanceof File)) continue;
       if (!item.size) continue;
-      if (attachments.length >= MAX_FILES) break;
-      if (item.size > MAX_FILE_SIZE) continue;
+
+      if (item.size > MAX_FILE_SIZE) {
+        return NextResponse.redirect(
+          new URL(`/onboarding/limit-reached?tier=${tier}`, req.url),
+          303
+        );
+      }
+
       if (
         !item.type.startsWith("image/") &&
         item.type !== "application/pdf"
-      )
+      ) {
         continue;
+      }
 
       const buffer = Buffer.from(await item.arrayBuffer());
 
@@ -96,7 +117,7 @@ ${businessImpact || "N/A"}
     /* ---------- REDIRECT ---------- */
 
     return NextResponse.redirect(
-      new URL(`/onboarding/${tier}/submitted`, req.url),
+      new URL(`/onboarding/submitted?tier=${tier}`, req.url),
       303
     );
   } catch (err) {

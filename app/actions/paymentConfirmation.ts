@@ -27,9 +27,15 @@ export async function sendPaymentConfirmation(sessionId: string) {
     return;
   }
 
-  const tier = (session.metadata?.tier ?? "basic").toUpperCase();
+  const tier =
+    session.metadata?.tier === "basic" ||
+    session.metadata?.tier === "premium" ||
+    session.metadata?.tier === "standard"
+      ? session.metadata.tier
+      : "standard";
 
-  const onboardingUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/onboarding/${tier.toLowerCase()}?session_id=${sessionId}`;
+  const onboardingUrl =
+    `${process.env.NEXT_PUBLIC_BASE_URL}/onboarding?tier=${tier}&session_id=${sessionId}`;
 
   // DEV-safe routing
   const recipient =
@@ -38,13 +44,12 @@ export async function sendPaymentConfirmation(sessionId: string) {
       : email;
 
   const result = await resend.emails.send({
-    from: "AccountAppeal <onboarding@mail.accountappeal.net>", // ← FIX
+    from: "AccountAppeal <onboarding@mail.accountappeal.net>",
     to: recipient,
-    replyTo: "support@accountappeal.net", // ← ADD
+    replyTo: "support@accountappeal.net",
     subject: "Payment received – next steps",
     html: `
       <div style="font-family: Arial, Helvetica, sans-serif; background-color: #ffffff; padding: 32px; color: #0f172a;">
-        <!-- Header -->
         <div style="margin-bottom: 32px;">
           <img
             src="https://accountappeal.net/logo_email.png"
@@ -54,13 +59,12 @@ export async function sendPaymentConfirmation(sessionId: string) {
           />
         </div>
 
-        <!-- Body -->
         <h1 style="font-size: 20px; font-weight: 600; margin-bottom: 16px;">
           Payment received
         </h1>
 
         <p style="font-size: 14px; line-height: 1.6; margin-bottom: 16px;">
-          Thank you for your payment. Your <strong>${tier}</strong> service is confirmed.
+          Thank you for your payment. Your <strong>${tier.toUpperCase()}</strong> service is confirmed.
         </p>
 
         <p style="font-size: 14px; line-height: 1.6; margin-bottom: 16px;">
@@ -86,7 +90,7 @@ export async function sendPaymentConfirmation(sessionId: string) {
         </p>
 
         <p style="font-size: 14px; line-height: 1.6; margin-bottom: 16px;">
-          You can complete the onboarding now or later.  
+          You can complete the onboarding now or later.
           If you submit it more than once, we will always use your latest submission.
         </p>
 
@@ -94,7 +98,6 @@ export async function sendPaymentConfirmation(sessionId: string) {
           We typically respond within 48 hours.
         </p>
 
-        <!-- Footer -->
         <hr style="margin: 32px 0; border: none; border-top: 1px solid #e5e7eb;" />
 
         <p style="font-size: 12px; color: #64748b; line-height: 1.5;">

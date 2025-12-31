@@ -3,18 +3,18 @@ const BASE_URL =
 
 export const site = {
   name: "AccountAppeal",
-  domain: "accountappeal.com", // placeholder (not used yet)
-  email: "support@accountappeal.com", // placeholder (not used yet)
+  domain: "accountappeal.com",
+  email: "support@accountappeal.com",
 
   stripe: {
     basic: `https://buy.stripe.com/test_9B63cv1bc5FI2CmgrQ6Na00?success_url=${encodeURIComponent(
-      `${BASE_URL}/onboarding/basic`
+      `${BASE_URL}/onboarding?tier=basic`
     )}`,
     standard: `https://buy.stripe.com/test_cNifZh3jkgkmdh0ejI6Na01?success_url=${encodeURIComponent(
-      `${BASE_URL}/onboarding/standard`
+      `${BASE_URL}/onboarding?tier=standard`
     )}`,
     premium: `https://buy.stripe.com/test_9B6dR93jk9VYgtcgrQ6Na02?success_url=${encodeURIComponent(
-      `${BASE_URL}/onboarding/premium`
+      `${BASE_URL}/onboarding?tier=premium`
     )}`,
   },
 } as const;
