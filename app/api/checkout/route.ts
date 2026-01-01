@@ -47,7 +47,7 @@ export async function POST(req: Request) {
       },
     ],
     success_url: `${BASE_URL}/onboarding?tier=${tier}&session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${BASE_URL}/pricing`,
+    cancel_url: `${BASE_URL}/#pricing`,
     metadata: {
       tier,
       welcome_email_sent: "false",
