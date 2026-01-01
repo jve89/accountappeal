@@ -124,10 +124,10 @@ export default function HomePage() {
           <div className="space-y-4 text-slate-700">
             <p className="text-base font-large text-slate-900">
               We help you structure your situation clearly and prepare appeal
-              documents that are calm, factual, and consistent.
+              documents that are calm, factual, and procedurally consistent.
             </p>
             <ul className="list-disc space-y-2 pl-5">
-              <li>Personalised appeal document drafted based on your situation</li>
+              <li>Personalised appeal document drafted based on the information available in your situation</li>
               <li>Evidence checklist (what to gather — and what to avoid)</li>
               <li>Account summary to keep information consistent (Standard / Premium)</li>
               <li>Follow-up appeal document when appropriate (Standard / Premium)</li>
@@ -230,6 +230,7 @@ export default function HomePage() {
                 <li>Personalised appeal document</li>
                 <li>Evidence checklist</li>
                 <li>Submission instructions</li>
+                <li>Designed for a clean, procedural first appeal</li>
               </ul>
             </div>
 
@@ -314,8 +315,17 @@ export default function HomePage() {
           <p className="mt-2 text-sm text-slate-600">
             No guarantees. You submit all appeals yourself through official platform
             channels. AccountAppeal provides structured documentation and guidance only.
-            We do not offer legal representation, platform access, account recovery or submission services,
-            and are not affiliated with any platform.
+            
+          </p>
+
+          <p className="mt-2 text-sm text-slate-600">
+            We do not offer legal representation, platform access, account recovery or
+            submission services, and are not affiliated with any platform.
+          </p>
+
+          <p className="mt-2 text-sm text-slate-600">
+            In some cases, an initial appeal may not receive a substantive response.
+            This does not mean the appeal was incorrect.
           </p>
         </div>
 
@@ -339,7 +349,7 @@ export default function HomePage() {
             ],
             [
               "How do I know which package is right for me?",
-              "Basic is suitable for a first, straightforward appeal. Standard adds structure and a follow-up strategy. Premium is for more complex situations or high-value accounts that require a full escalation plan. If you’re unsure, you can contact us before ordering.",
+              "Basic is suitable for a clean, procedural first appeal. Standard adds structure and a follow-up strategy. Premium is for more complex situations or high-value accounts that require a full escalation plan. If you’re unsure, you can contact us before ordering.",
             ],
             [
               "How long does the appeal process take?",

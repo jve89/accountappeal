@@ -187,7 +187,7 @@ export function OnboardingForm({
                   className="mt-1"
                 />
                 <span>
-                  I understand that AccountAppeal provides document preparation
+                  I understand that AccountAppeal provides procedural document preparation
                   and guidance only and does not guarantee account
                   reinstatement.
                 </span>
@@ -219,6 +219,20 @@ export function OnboardingForm({
                   factual to the best of my knowledge.
                 </span>
               </label>
+
+              <label className="flex items-start gap-3">
+              <input
+                type="checkbox"
+                name="scope_ack_4"
+                required
+                className="mt-1"
+              />
+              <span>
+                I understand that an initial appeal may not receive a substantive
+                response and that this does not mean the appeal was incorrect or
+                improperly prepared.
+              </span>
+            </label>
             </div>
           </div>
 
