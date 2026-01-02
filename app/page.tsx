@@ -357,15 +357,19 @@ export default function HomePage() {
             ],
             [
               "What do you need from me to get started?",
-              "After payment, you’ll receive an evidence checklist explaining exactly what information and screenshots to provide. You don’t need everything — we work with what’s available.",
+              "After payment, you’ll complete a short onboarding form to describe your situation. After review, we’ll send an evidence checklist for the full intake, outlining what additional information or screenshots (if any) are relevant. We work with what’s available.",
             ],
             [
               "What if I don’t have screenshots or complete evidence?",
               "You can still proceed. Stronger evidence helps, but missing items are common. We’ll assess what’s possible based on what you can provide.",
             ],
             [
-              "What is a follow-up appeal or escalation document?",
-              "If an initial appeal is ignored or receives a generic response, a follow-up appeal can request a proper review. In Premium cases, this may extend to formal complaint templates for applicable review bodies when appropriate.",
+              "What is a follow-up appeal?",
+              "If an initial appeal is ignored or receives a generic response, a follow-up appeal can request a proper review in a clear and consistent way, based on the same facts and documentation.",
+            ],
+            [
+              "What is a formal complaint document?",
+              "In some Premium cases, a formal complaint document may be prepared for an applicable review body outside the platform. This is used selectively when the standard appeal process has been exhausted and a structured external review may be appropriate, depending on jurisdiction, platform type, and case context. It does not guarantee review or outcome.",
             ],
             [
               "What types of cases do you not handle?",
