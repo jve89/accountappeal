@@ -43,14 +43,13 @@ export default function HomePage() {
             </div>
 
             {/* Image */}
-            <div>
+            <div className="relative h-[420px] w-full overflow-hidden rounded-lg">
               <img
                 src="/hero_1.png"
                 alt="Reviewing documents calmly in a quiet workspace"
-                className="w-full rounded-lg object-cover"
+                className="h-full w-full object-cover object-[50%_35%]"
               />
             </div>
-
           </div>
 
           {/* Supporting points */}
