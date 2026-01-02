@@ -12,7 +12,7 @@ export function SiteFooter() {
               {site.name}
             </div>
             <p className="mt-2 leading-relaxed">
-              Structured appeal documents and guidance for suspended social media
+              Structured appeal documents and guidance for suspended online platform
               accounts.
             </p>
           </div>
