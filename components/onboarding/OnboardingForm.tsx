@@ -179,6 +179,7 @@ export function OnboardingForm({
             </label>
 
             <div className="mt-4 space-y-3 text-sm text-slate-700">
+              {/* Scope & expectations */}
               <label className="flex items-start gap-3">
                 <input
                   type="checkbox"
@@ -188,11 +189,13 @@ export function OnboardingForm({
                 />
                 <span>
                   I understand that AccountAppeal provides procedural document preparation
-                  and guidance only and does not guarantee account
-                  reinstatement.
+                  and guidance only, does not guarantee account reinstatement, and that an
+                  initial appeal may not receive a substantive response without implying
+                  that the appeal was incorrect or improperly prepared.
                 </span>
               </label>
 
+              {/* Decision authority & fee scope */}
               <label className="flex items-start gap-3">
                 <input
                   type="checkbox"
@@ -201,12 +204,13 @@ export function OnboardingForm({
                   className="mt-1"
                 />
                 <span>
-                  I understand that all final decisions are made by the platform,
-                  and that my fee covers professional time and document
+                  I understand that all final decisions are made solely by the platform,
+                  and that my fee covers professional time, analysis, and document
                   preparation as part of the service.
                 </span>
               </label>
 
+              {/* Accuracy of information */}
               <label className="flex items-start gap-3">
                 <input
                   type="checkbox"
@@ -215,24 +219,10 @@ export function OnboardingForm({
                   className="mt-1"
                 />
                 <span>
-                  I confirm that the information I am providing is truthful and
-                  factual to the best of my knowledge.
+                  I confirm that the information I am providing is truthful and factual
+                  to the best of my knowledge.
                 </span>
               </label>
-
-              <label className="flex items-start gap-3">
-              <input
-                type="checkbox"
-                name="scope_ack_4"
-                required
-                className="mt-1"
-              />
-              <span>
-                I understand that an initial appeal may not receive a substantive
-                response and that this does not mean the appeal was incorrect or
-                improperly prepared.
-              </span>
-            </label>
             </div>
           </div>
 
