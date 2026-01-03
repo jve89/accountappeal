@@ -87,6 +87,11 @@ export function SiteFooter() {
                   How we structure an appeal
                 </Link>
               </li>
+              <li>
+                <Link href="/resources" className="hover:text-slate-900">
+                  Resources
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

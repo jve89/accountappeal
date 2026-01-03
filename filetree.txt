@@ -11,8 +11,11 @@
 │   ├── api
 │   │   ├── checkout
 │   │   │   └── route.ts
-│   │   └── onboarding
-│   │       └── route.ts
+│   │   ├── onboarding
+│   │   │   └── route.ts
+│   │   └── stripe
+│   │       └── webhook
+│   │           └── route.ts
 │   ├── company
 │   │   └── page.tsx
 │   ├── contact
@@ -22,18 +25,9 @@
 │   ├── globals.css
 │   ├── layout.tsx
 │   ├── onboarding
-│   │   ├── basic
-│   │   │   ├── page.tsx
-│   │   │   └── submitted
-│   │   │       └── page.tsx
-│   │   ├── premium
-│   │   │   ├── page.tsx
-│   │   │   └── submitted
-│   │   │       └── page.tsx
-│   │   └── standard
-│   │       ├── page.tsx
-│   │       └── submitted
-│   │           └── page.tsx
+│   │   ├── page.tsx
+│   │   └── submitted
+│   │       └── page.tsx
 │   ├── page.tsx
 │   ├── privacy
 │   │   └── page.tsx
@@ -60,6 +54,7 @@
 ├── postcss.config.mjs
 ├── public
 │   ├── circle-portrait.png
+│   ├── hero.png
 │   ├── hero_1.png
 │   ├── logo_email.png
 │   ├── logo_header.svg
@@ -68,4 +63,4 @@
 │   └── who-we-are.png
 └── tsconfig.json
 
-23 directories, 46 files
+20 directories, 44 files
