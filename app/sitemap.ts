@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
+import { resourceGuides } from "@/lib/resources";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://accountappeal.net";
 
-  return [
+  const staticPages: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}/`,
       changeFrequency: "monthly",
@@ -34,20 +35,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.6,
     },
-    {
-      url: `${baseUrl}/resources/instagram-account-suspended`,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/resources/facebook-account-disabled`,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/resources/instagram-appeal-ignored`,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
   ];
+
+  const resourcePages: MetadataRoute.Sitemap = resourceGuides.map(
+    ({ slug, changeFrequency, priority }) => ({
+      url: `${baseUrl}/resources/${slug}`,
+      changeFrequency,
+      priority,
+    })
+  );
+
+  return [...staticPages, ...resourcePages];
 }

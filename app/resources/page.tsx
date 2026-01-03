@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { resourceGuides } from "@/lib/resources";
 
 export default function ResourcesPage() {
   return (
@@ -22,30 +23,16 @@ export default function ResourcesPage() {
             </h2>
 
             <ul className="mt-3 list-disc pl-5 space-y-2">
-              <li>
-                <Link
-                  href="/resources/instagram-account-suspended"
-                  className="hover:text-slate-900"
-                >
-                  Instagram account suspended — what to do
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/resources/facebook-account-disabled"
-                  className="hover:text-slate-900"
-                >
-                  Facebook account disabled — next steps
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/resources/instagram-appeal-ignored"
-                  className="hover:text-slate-900"
-                >
-                Instagram appeal rejected or ignored — what it actually means
-                </Link>
-              </li>
+              {resourceGuides.map((guide) => (
+                <li key={guide.slug}>
+                  <Link
+                    href={`/resources/${guide.slug}`}
+                    className="hover:text-slate-900"
+                  >
+                    {guide.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </section>
 
