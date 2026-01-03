@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function FacebookAccountDisabledPage() {
   return (
     <section className="bg-white">
@@ -28,6 +30,15 @@ export default function FacebookAccountDisabledPage() {
               A disabled account may be temporary or permanent. The platform does
               not always clearly state which applies at the time enforcement is
               applied.
+            </p>
+            <p className="mt-2">
+              If Facebook uses overlapping enforcement labels, see{" "}
+              <Link
+                href="/resources/account-restricted-vs-suspended"
+                className="underline hover:text-slate-900"
+              >
+                how restriction differs from suspension or disablement
+              </Link>.
             </p>
           </section>
 
@@ -80,6 +91,47 @@ export default function FacebookAccountDisabledPage() {
               Some requests receive automated responses, while others receive no
               visible reply. A lack of response does not necessarily indicate a
               final decision.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-medium text-slate-900">
+              Related Meta restrictions you may encounter
+            </h2>
+            <p className="mt-2">
+              In some cases, a disabled Facebook account is only one part of a
+              broader restriction affecting linked Meta assets. Depending on
+              how the account is used, users may also encounter:
+            </p>
+            <ul className="mt-2 list-disc pl-5 space-y-1">
+              <li>
+                <Link
+                  href="/resources/facebook-business-manager-restricted"
+                  className="hover:text-slate-900"
+                >
+                  Facebook Business Manager restricted — what it means and what to expect
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/resources/facebook-ads-account-disabled"
+                  className="hover:text-slate-900"
+                >
+                  Facebook Ads account disabled — what it means and what to expect
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/resources/payment-profile-suspended"
+                  className="hover:text-slate-900"
+                >
+                  Payment profile suspended — Meta or Google
+                </Link>
+              </li>
+            </ul>
+            <p className="mt-2">
+              Each restriction follows a separate review path, even when they
+              appear connected from the user’s perspective.
             </p>
           </section>
 

@@ -33,6 +33,53 @@
 │   │   └── page.tsx
 │   ├── process
 │   │   └── page.tsx
+│   ├── resources
+│   │   ├── account-restricted-vs-suspended
+│   │   │   └── page.tsx
+│   │   ├── account-suspended-suspicious-activity
+│   │   │   └── page.tsx
+│   │   ├── appeal-submitted-no-response
+│   │   │   └── page.tsx
+│   │   ├── facebook-account-disabled
+│   │   │   └── page.tsx
+│   │   ├── facebook-ads-account-disabled
+│   │   │   └── page.tsx
+│   │   ├── facebook-business-manager-restricted
+│   │   │   └── page.tsx
+│   │   ├── gdpr-data-access-request-account-suspension
+│   │   │   └── page.tsx
+│   │   ├── google-account-disabled
+│   │   │   └── page.tsx
+│   │   ├── google-account-suspended
+│   │   │   └── page.tsx
+│   │   ├── google-ads-circumventing-systems
+│   │   │   └── page.tsx
+│   │   ├── how-account-appeals-work
+│   │   │   └── page.tsx
+│   │   ├── instagram-account-suspended
+│   │   │   └── page.tsx
+│   │   ├── instagram-appeal-ignored
+│   │   │   └── page.tsx
+│   │   ├── instagram-community-guidelines-disabled
+│   │   │   └── page.tsx
+│   │   ├── is-it-worth-appealing-again
+│   │   │   └── page.tsx
+│   │   ├── linked-accounts-disabled-together
+│   │   │   └── page.tsx
+│   │   ├── page.tsx
+│   │   ├── payment-profile-suspended
+│   │   │   └── page.tsx
+│   │   ├── permanently-disabled-vs-temporarily-suspended
+│   │   │   └── page.tsx
+│   │   ├── tiktok-account-permanently-banned
+│   │   │   └── page.tsx
+│   │   ├── x-account-locked-suspended-banned
+│   │   │   └── page.tsx
+│   │   ├── x-account-suspended
+│   │   │   └── page.tsx
+│   │   └── youtube-channel-terminated
+│   │       └── page.tsx
+│   ├── sitemap.ts
 │   └── terms
 │       └── page.tsx
 ├── components
@@ -45,6 +92,7 @@
 ├── filetree.txt
 ├── lib
 │   ├── getCheckoutEmail.ts
+│   ├── resources.ts
 │   ├── site.ts
 │   └── stripe.ts
 ├── next-env.d.ts
@@ -59,8 +107,7 @@
 │   ├── logo_email.png
 │   ├── logo_header.svg
 │   ├── robots.txt
-│   ├── sitemap.xml
 │   └── who-we-are.png
 └── tsconfig.json
 
-20 directories, 44 files
+43 directories, 68 files

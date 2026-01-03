@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function InstagramAccountSuspendedPage() {
   return (
     <section className="bg-white">
@@ -20,8 +22,8 @@ export default function InstagramAccountSuspendedPage() {
             </h2>
             <p className="mt-2">
               Instagram uses several terms to describe enforcement actions,
-              including <em>suspended</em>, <em>disabled</em>, or
-              <em> restricted</em>. In practice, these labels usually indicate
+              including <em>suspended</em>, <em>disabled</em>, or{" "}
+              <em>restricted</em>. In practice, these labels usually indicate
               that access to the account has been limited due to a suspected
               policy violation or automated review outcome.
             </p>
@@ -29,6 +31,15 @@ export default function InstagramAccountSuspendedPage() {
               A suspension may be temporary or permanent. The platform does not
               always clearly distinguish between these states at the time the
               restriction is applied.
+            </p>
+            <p className="mt-2">
+              If Instagram uses different enforcement labels in your case, see{" "}
+              <Link
+                href="/resources/account-restricted-vs-suspended"
+                className="underline hover:text-slate-900"
+              >
+                how restriction differs from suspension or disablement
+              </Link>.
             </p>
           </section>
 
@@ -81,6 +92,28 @@ export default function InstagramAccountSuspendedPage() {
               Some requests receive automated responses or no visible response
               at all. A lack of reply does not necessarily indicate that the
               appeal was rejected or ignored.
+            </p>
+
+            <p className="mt-2">
+              If you have already submitted a review request and received no
+              response, see{" "}
+              <Link
+                href="/resources/instagram-appeal-ignored"
+                className="underline hover:text-slate-900"
+              >
+                what it usually means when an Instagram appeal is ignored
+              </Link>.
+            </p>
+
+            <p className="mt-2">
+              If your account was disabled under Instagram’s community guidelines
+              rather than temporarily suspended, see{" "}
+              <Link
+                href="/resources/instagram-community-guidelines-disabled"
+                className="underline hover:text-slate-900"
+              >
+                how Instagram typically uses that classification
+              </Link>.
             </p>
           </section>
 
