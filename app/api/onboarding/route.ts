@@ -31,13 +31,12 @@ export async function POST(req: Request) {
     const scopeAck2 = formData.get("scope_ack_2");
     const scopeAck3 = formData.get("scope_ack_3");
 
-    if (
-      !email ||
-      !suspensionDescription ||
-      !scopeAck1 ||
-      !scopeAck2 ||
-      !scopeAck3
-    ) {
+    const scopeAcknowledged =
+      Boolean(scopeAck1) && Boolean(scopeAck2) && Boolean(scopeAck3);
+
+    const scopeAcknowledgedAt = new Date().toISOString();
+
+    if (!email || !suspensionDescription || !scopeAcknowledged) {
       return NextResponse.redirect(
         new URL(`/onboarding?tier=${tier}&error=missing_fields`, req.url),
         303
@@ -94,6 +93,10 @@ export async function POST(req: Request) {
 
 Tier: ${tier}
 Client email: ${email}
+
+--- Scope & disclaimer confirmation ---
+All required acknowledgements confirmed: YES
+Acknowledged at (server time, UTC): ${scopeAcknowledgedAt}
 
 --- Suspension description ---
 ${suspensionDescription}
