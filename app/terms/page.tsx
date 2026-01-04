@@ -1,3 +1,5 @@
+import { BackLink } from "@/components/resources/BackLink";
+
 export default function TermsPage() {
   return (
     <section className="bg-white">
@@ -144,6 +146,7 @@ export default function TermsPage() {
               regarding these Terms.
             </p>
           </section>
+          <BackLink href="/" label="Back to home" />
         </div>
       </div>
     </section>

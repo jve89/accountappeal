@@ -1,3 +1,5 @@
+import { BackLink } from "@/components/resources/BackLink";
+
 export default function ProcessPage() {
   return (
     <section className="bg-white">
@@ -150,6 +152,7 @@ export default function ProcessPage() {
               authority, based on their internal policies and review processes.
             </p>
           </section>
+          <BackLink href="/" label="Back to home" />
         </div>
       </div>
     </section>

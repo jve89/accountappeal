@@ -1,3 +1,5 @@
+import { BackLink } from "@/components/resources/BackLink";
+
 export default function PrivacyPage() {
   return (
     <section className="bg-white">
@@ -100,6 +102,7 @@ export default function PrivacyPage() {
               questions.
             </p>
           </section>
+          <BackLink href="/" label="Back to home" />
         </div>
       </div>
     </section>
