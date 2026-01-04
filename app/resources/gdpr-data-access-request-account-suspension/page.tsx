@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BackLink } from "@/components/resources/BackLink";
 
 export default function GdprDataAccessAfterSuspensionPage() {
   return (
@@ -188,6 +189,7 @@ export default function GdprDataAccessAfterSuspensionPage() {
               outcomes remain independent.
             </p>
           </section>
+          <BackLink href="/resources" label="Back to all guides" />
         </div>
       </div>
     </section>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BackLink } from "@/components/resources/BackLink";
 
 export default function FacebookAccountDisabledPage() {
   return (
@@ -165,6 +166,7 @@ export default function FacebookAccountDisabledPage() {
               account holder and must be made through official Facebook channels.
             </p>
           </section>
+          <BackLink href="/resources" label="Back to all guides" />
         </div>
       </div>
     </section>

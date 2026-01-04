@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BackLink } from "@/components/resources/BackLink";
 
 export default function YouTubeChannelTerminatedPage() {
   return (
@@ -145,6 +146,7 @@ export default function YouTubeChannelTerminatedPage() {
               Final decisions remain solely with YouTube and Google.
             </p>
           </section>
+          <BackLink href="/resources" label="Back to all guides" />
         </div>
       </div>
     </section>

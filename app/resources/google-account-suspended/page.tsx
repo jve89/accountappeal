@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BackLink } from "@/components/resources/BackLink";
 
 export default function GoogleAccountSuspendedPage() {
   return (
@@ -193,6 +194,7 @@ export default function GoogleAccountSuspendedPage() {
               Final decisions remain solely with Google.
             </p>
           </section>
+          <BackLink href="/resources" label="Back to all guides" />
         </div>
       </div>
     </section>

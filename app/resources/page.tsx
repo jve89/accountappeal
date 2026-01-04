@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { resourceGuides } from "@/lib/resources";
+import { BackLink } from "@/components/resources/BackLink";
 
 export default function ResourcesPage() {
   return (
@@ -51,6 +52,7 @@ export default function ResourcesPage() {
               significantly based on platform, account history, and context.
             </p>
           </section>
+          <BackLink href="/" label="Back to home" />
         </div>
       </div>
     </section>

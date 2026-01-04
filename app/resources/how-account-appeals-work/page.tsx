@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BackLink } from "@/components/resources/BackLink";
 
 export default function HowAccountAppealsWorkPage() {
   return (
@@ -184,6 +185,7 @@ export default function HowAccountAppealsWorkPage() {
               human review. Final decisions remain solely with the platform.
             </p>
           </section>
+          <BackLink href="/resources" label="Back to all guides" />
         </div>
       </div>
     </section>

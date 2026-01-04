@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BackLink } from "@/components/resources/BackLink";
 
 export default function InstagramAppealIgnoredPage() {
   return (
@@ -145,6 +146,7 @@ export default function InstagramAppealIgnoredPage() {
               further appeals will be accepted.
             </p>
           </section>
+          <BackLink href="/resources" label="Back to all guides" />
         </div>
       </div>
     </section>

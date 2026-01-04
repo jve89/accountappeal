@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BackLink } from "@/components/resources/BackLink";
 
 export default function AppealNoResponsePage() {
   return (
@@ -183,6 +184,7 @@ export default function AppealNoResponsePage() {
               Final decisions remain solely with the platform.
             </p>
           </section>
+          <BackLink href="/resources" label="Back to all guides" />
         </div>
       </div>
     </section>

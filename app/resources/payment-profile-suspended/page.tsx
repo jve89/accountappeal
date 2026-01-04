@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BackLink } from "@/components/resources/BackLink";
 
 export default function PaymentProfileSuspendedPage() {
   return (
@@ -159,6 +160,7 @@ export default function PaymentProfileSuspendedPage() {
               Final decisions remain solely with the platform.
             </p>
           </section>
+          <BackLink href="/resources" label="Back to all guides" />
         </div>
       </div>
     </section>
