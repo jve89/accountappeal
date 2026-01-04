@@ -30,6 +30,11 @@ export default function TermsPage() {
               AccountAppeal does not submit appeals, complaints, or documents on
               behalf of clients.
             </p>
+            <p className="mt-2">
+              Use of the service, including submission of onboarding information,
+              is conditional upon the client’s acknowledgment and acceptance of
+              these Terms and the stated scope and limitations of the service.
+            </p>
           </section>
 
           <section>

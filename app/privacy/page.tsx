@@ -19,8 +19,9 @@ export default function PrivacyPage() {
             <p className="mt-2">
               AccountAppeal collects only the information necessary to provide
               the service. This may include name, email address, account-related
-              information provided voluntarily, and materials submitted during
-              onboarding.
+              information provided voluntarily, materials submitted during
+              onboarding, and procedural confirmations related to service scope
+              and acknowledgment of terms.
             </p>
           </section>
 
@@ -55,7 +56,8 @@ export default function PrivacyPage() {
             </h2>
             <p className="mt-2">
               Information is retained only as long as necessary to provide the
-              service or meet legal and operational requirements.
+              service, maintain internal records related to service delivery and
+              acknowledgements, or meet legal and operational requirements.
             </p>
           </section>
 
