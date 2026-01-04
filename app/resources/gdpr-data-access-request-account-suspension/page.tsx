@@ -157,7 +157,7 @@ export default function GdprDataAccessAfterSuspensionPage() {
               </li>
               <li>
                 <Link
-                  href="/resources/account-disabled-vs-suspended"
+                  href="/resources/permanently-disabled-vs-temporarily-suspended"
                   className="hover:text-slate-900"
                 >
                   Account permanently disabled vs temporarily suspended — what’s the difference?
