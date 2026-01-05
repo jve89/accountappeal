@@ -147,7 +147,7 @@ export default function GoogleAccountDisabledPage() {
               </li>
               <li>
                 <Link
-                  href="/resources/suspicious-activity-suspension"
+                  href="/resources/account-suspended-suspicious-activity"
                   className="hover:text-slate-900"
                 >
                   Account suspended due to suspicious activity — what it usually means
