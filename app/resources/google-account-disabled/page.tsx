@@ -70,7 +70,7 @@ export default function GoogleAccountDisabledPage() {
             </p>
             <p className="mt-2">
               <Link
-                href="/resources/account-disabled-vs-suspended"
+                href="/resources/permanently-disabled-vs-temporarily-suspended"
                 className="hover:text-slate-900"
               >
                 Account permanently disabled vs temporarily suspended — what’s the difference?

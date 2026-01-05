@@ -118,7 +118,7 @@ export default function AppealAgainGuidePage() {
                 </Link>
               </li>
               <li>
-                <Link href="/resources/account-disabled-vs-suspended" className="hover:text-slate-900">
+                <Link href="/resources/permanently-disabled-vs-temporarily-suspended" className="hover:text-slate-900">
                   Account permanently disabled vs temporarily suspended — what’s the difference?
                 </Link>
               </li>
