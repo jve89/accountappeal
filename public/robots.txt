@@ -4,4 +4,4 @@ Allow: /
 Disallow: /api/
 Disallow: /_next/
 
-Sitemap: https://www.accountappeal.net/sitemap.xml
+Sitemap: https://accountappeal.net/sitemap.xml

@@ -17,7 +17,7 @@ export async function POST(req: Request) {
   }
 
   const BASE_URL =
-    process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    process.env.NEXT_PUBLIC_BASE_URL || "https://accountappeal.net";
 
   const stripe = new Stripe(stripeSecretKey);
 

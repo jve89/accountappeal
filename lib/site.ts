@@ -1,10 +1,10 @@
 const BASE_URL =
-  process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_BASE_URL || "https://accountappeal.net";
 
 export const site = {
   name: "AccountAppeal",
-  domain: "accountappeal.com",
-  email: "support@accountappeal.com",
+  domain: "accountappeal.net",
+  email: "support@accountappeal.net",
 
   stripe: {
     basic: `https://buy.stripe.com/test_9B63cv1bc5FI2CmgrQ6Na00?success_url=${encodeURIComponent(
